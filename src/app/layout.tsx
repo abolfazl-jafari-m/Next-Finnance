@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-        <body
+        <body dir="rtl"
             cz-shortcut-listen="true"
             className={`antialiased ${vazir.className}`}
         >

@@ -1,12 +1,13 @@
-import Logo from "@/components/onboarding/logo/logo";
+import React, {ReactNode} from 'react';
 
 
-export default function Onboarding() {
-
+function Layout({children} : {children : ReactNode}) {
     return (
         <main
             className={"bg-[url('/images/onboard-back.jpg')] bg-center bg-cover bg-no-repeat w-full h-screen flex items-center justify-center"}>
-            <Logo/>
+            {children}
         </main>
     );
 }
+
+export default Layout;
