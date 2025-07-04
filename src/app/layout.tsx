@@ -2,7 +2,7 @@ import type {Metadata} from "next";
 import "./globals.css";
 // import {poppins} from "@/styles/fonts/fonts";
 import React from "react";
-
+import {vazir} from "@/styles/fonts/fonts";
 
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default function RootLayout({
         <html lang="en">
         <body
             cz-shortcut-listen="true"
-            className={`antialiased`}
+            className={`antialiased ${vazir.className}`}
         >
         {children}
         </body>
