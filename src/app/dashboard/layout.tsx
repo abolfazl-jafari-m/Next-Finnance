@@ -1,9 +1,18 @@
 import React, {ReactNode} from 'react';
+import AppSidebar from "@/components/dash/app-sidebar/app-sidebar";
+import AppHeader from "@/components/dash/app-header/app-header";
+import {SidebarInset, SidebarProvider} from "@/components/ui/sidebar";
 
-function Layout({children} : {children : ReactNode}) {
+function Layout({children}: { children: ReactNode }) {
     return (
         <div>
-            {children}
+            <SidebarProvider>
+                <AppSidebar/>
+                <SidebarInset>
+                    <AppHeader/>
+                </SidebarInset>
+                {children}
+            </SidebarProvider>
         </div>
     );
 }
