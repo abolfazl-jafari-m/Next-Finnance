@@ -10,8 +10,8 @@ function Layout({children}: { children: ReactNode }) {
                 <AppSidebar/>
                 <SidebarInset>
                     <AppHeader/>
+                    {children}
                 </SidebarInset>
-                {children}
             </SidebarProvider>
         </div>
     );
