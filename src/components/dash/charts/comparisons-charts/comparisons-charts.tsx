@@ -41,7 +41,7 @@ const data = [
 
 function ComparisonsCharts() {
     return (
-        <Card className={"w-full col-span-3"}>
+        <Card className={"w-full col-span-3 row-start-3"}>
             <CardHeader className={"flex items-center justify-between flex-row"}>
                 <div className={"flex flex-col gap-3"}>
                     <CardTitle>گزارش مالی</CardTitle>

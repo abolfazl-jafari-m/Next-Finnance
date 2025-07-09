@@ -2,14 +2,18 @@ import React from 'react';
 import ComparisonsCharts from "@/components/dash/charts/comparisons-charts/comparisons-charts";
 import CategoryChart from "@/components/dash/charts/category-chart/category-chart";
 import TotalBalance from "@/components/dash/total-balance/total-balance";
+import RecentTransactions from "@/components/dash/recent-tranractions/recent-transactions";
+import UpcomingBills from "@/components/dash/upcoming-bils/upcoming-bills";
+import Calender from "@/components/dash/calender/calender";
+
 
 function DashboardPage() {
     return (
-        <div className={"grid grid-cols-4  justify-items-center gap-10 p-10"}>
+        <div className={"grid grid-cols-4 grid-rows-[1fr 1fr 2fr] justify-items-center gap-10 p-10"}>
             <TotalBalance />
-            <TotalBalance />
-            <TotalBalance />
-            <TotalBalance />
+            <RecentTransactions />
+            <UpcomingBills />
+            <Calender />
             <ComparisonsCharts />
             <CategoryChart />
         </div>

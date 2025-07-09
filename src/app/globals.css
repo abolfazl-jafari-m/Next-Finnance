@@ -6,6 +6,11 @@
 @theme {
     --color-primary  : #00D09E;
 }
+::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
 
 @theme inline {
     --radius-sm  : calc(var(--radius) - 4px);

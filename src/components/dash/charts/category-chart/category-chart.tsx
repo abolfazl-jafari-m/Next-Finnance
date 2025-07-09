@@ -37,7 +37,7 @@ const data = [
 
 function CategoryChart() {
     return (
-        <Card className={"w-full col-span-1"}>
+        <Card className={"w-full col-span-1 row-start-3 row-end-4"}>
             <CardHeader>
                 <CardTitle>دسته بندی مخارج</CardTitle>
                 <CardDescription>دسته بندی براساس نوع خرید شما</CardDescription>
