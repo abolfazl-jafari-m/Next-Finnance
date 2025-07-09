@@ -68,7 +68,7 @@ function AppSidebar() {
                 </SidebarContent>
                 <SidebarFooter className={"py-4"}>
                     <DropdownMenu dir={"rtl"}>
-                        <DropdownMenuTrigger asChild={true}>
+                        <DropdownMenuTrigger >
                                 <Card className={"rounded-sm  px-2 py-1.5 w-full flex items-center flex-row cursor-pointer justify-between "}>
                                     <div className={"flex items-center gap-1"}>
                                         <Avatar>
