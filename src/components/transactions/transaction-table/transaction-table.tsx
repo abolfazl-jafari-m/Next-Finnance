@@ -12,8 +12,7 @@ import {flexRender, useReactTable} from "@tanstack/react-table";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import TablePagination from "@/components/transactions/transaction-table/table-pagination";
 import TableFiltering from "@/components/transactions/transaction-table/table-filtering";
-import {Button} from "@/components/ui/button";
-import Link from "next/link";
+import AddTransactionModal from "@/components/transactions/add-transaction-modal/add-transaction-modal";
 
 interface TableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -21,41 +20,39 @@ interface TableProps<TData, TValue> {
 }
 
 function TransactionTable<TData, TValue>({columns, data}: TableProps<TData, TValue>) {
-    const [sorting ,setSorting] = React.useState<SortingState>([]);
-    const [columnFilters , setColumnFilters] = React.useState<ColumnFiltersState>([]);
+    const [sorting, setSorting] = React.useState<SortingState>([]);
+    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
     const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
     const [rowSelection, setRowSelection] = React.useState<RowSelectionState>({});
     const table = useReactTable({
         columns,
         data,
         getCoreRowModel: getCoreRowModel(),
-        getPaginationRowModel : getPaginationRowModel(),
-        getSortedRowModel :getSortedRowModel(),
-        getFilteredRowModel : getFilteredRowModel(),
-        state : {
+        getPaginationRowModel: getPaginationRowModel(),
+        getSortedRowModel: getSortedRowModel(),
+        getFilteredRowModel: getFilteredRowModel(),
+        state: {
             sorting,
             columnFilters,
             columnVisibility,
             rowSelection
         },
-        onSortingChange : setSorting,
-        onColumnFiltersChange : setColumnFilters,
-        onColumnVisibilityChange :setColumnVisibility,
-        onRowSelectionChange : setRowSelection,
+        onSortingChange: setSorting,
+        onColumnFiltersChange: setColumnFilters,
+        onColumnVisibilityChange: setColumnVisibility,
+        onRowSelectionChange: setRowSelection,
     })
     return (
         <div className={"p-10 "}>
             <div className={"flex items-center justify-between"}>
-                <Button asChild={true}>
-                    <Link href={"/dashboard/transactions/new"} >تراکنش جدید</Link>
-                </Button>
-            <TableFiltering  table={table}/>
+                <AddTransactionModal/>
+                <TableFiltering table={table}/>
             </div>
             <Table>
                 <TableHeader className={"bg-primary "}>
                     {
                         table.getHeaderGroups().map(headerGroup => (
-                            <TableRow key={headerGroup.id} >
+                            <TableRow key={headerGroup.id}>
                                 {
                                     headerGroup.headers.map(header => (
                                         <TableHead key={header.id} className={"text-center text-muted "}>
@@ -76,7 +73,7 @@ function TransactionTable<TData, TValue>({columns, data}: TableProps<TData, TVal
                         ))
                     }
                 </TableHeader>
-                <TableBody >
+                <TableBody>
                     {
                         table.getRowModel().rows?.length
                             ? (
@@ -108,7 +105,7 @@ function TransactionTable<TData, TValue>({columns, data}: TableProps<TData, TVal
                     }
                 </TableBody>
             </Table>
-            <TablePagination table={table} />
+            <TablePagination table={table}/>
         </div>
     );
 }

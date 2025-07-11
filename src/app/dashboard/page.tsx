@@ -10,7 +10,7 @@ import BankingCard from "@/components/dash/banking-card/banking-card";
 
 function DashboardPage() {
     return (
-        <div className={"grid grid-cols-4 grid-rows-[1fr 1fr 3fr] justify-items-center gap-10 p-10"}>
+        <main className={"grid grid-cols-4 grid-rows-[1fr 1fr 3fr] justify-items-center gap-10 p-10"}>
             <TotalBalance />
             <BankingCard/>
             <RecentTransactions />
@@ -18,7 +18,7 @@ function DashboardPage() {
             <Calender />
             <ComparisonsCharts />
             <CategoryChart />
-        </div>
+        </main>
     );
 }
 
