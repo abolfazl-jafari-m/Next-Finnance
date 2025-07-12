@@ -8,11 +8,13 @@ import {
     getSortedRowModel, RowSelectionState,
     SortingState, VisibilityState
 } from "@tanstack/table-core";
-import {flexRender, useReactTable} from "@tanstack/react-table";
-import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
-import TablePagination from "@/components/transactions/transaction-table/table-pagination";
-import TableFiltering from "@/components/transactions/transaction-table/table-filtering";
+import {useReactTable} from "@tanstack/react-table";
+import {Table} from "@/components/ui/table";
 import AddTransactionModal from "@/components/transactions/add-transaction-modal/add-transaction-modal";
+import TableHeaderSection from "@/components/base/table/table-header-section";
+import TableBodySection from "@/components/base/table/table-body-section";
+import TableFiltering from "@/components/base/table/table-filtering";
+import TablePagination from "@/components/base/table/table-pagination";
 
 interface TableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -49,61 +51,8 @@ function TransactionTable<TData, TValue>({columns, data}: TableProps<TData, TVal
                 <TableFiltering table={table}/>
             </div>
             <Table>
-                <TableHeader className={"bg-primary "}>
-                    {
-                        table.getHeaderGroups().map(headerGroup => (
-                            <TableRow key={headerGroup.id}>
-                                {
-                                    headerGroup.headers.map(header => (
-                                        <TableHead key={header.id} className={"text-center text-muted "}>
-                                            {
-                                                header.isPlaceholder
-                                                    ?
-                                                    null
-                                                    :
-                                                    flexRender(
-                                                        header.column.columnDef.header,
-                                                        header.getContext()
-                                                    )
-                                            }
-                                        </TableHead>
-                                    ))
-                                }
-                            </TableRow>
-                        ))
-                    }
-                </TableHeader>
-                <TableBody>
-                    {
-                        table.getRowModel().rows?.length
-                            ? (
-                                table.getRowModel().rows.map((row) => (
-                                    <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
-                                        {
-                                            row.getVisibleCells().map(cell => (
-                                                <TableCell key={cell.id} className={"text-center"}>
-                                                    {
-                                                        flexRender(
-                                                            cell.column.columnDef.cell,
-                                                            cell.getContext()
-                                                        )
-                                                    }
-                                                </TableCell>
-                                            ))
-                                        }
-                                    </TableRow>
-                                ))
-                            )
-                            :
-                            (
-                                <TableRow>
-                                    <TableCell colSpan={columns.length} className={"text-center"}>
-                                        رکوردی یافت نشد...
-                                    </TableCell>
-                                </TableRow>
-                            )
-                    }
-                </TableBody>
+                <TableHeaderSection table={table}/>
+                <TableBodySection table={table} columns={columns} />
             </Table>
             <TablePagination table={table}/>
         </div>

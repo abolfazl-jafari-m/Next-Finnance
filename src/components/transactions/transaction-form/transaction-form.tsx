@@ -26,6 +26,7 @@ function TransactionForm({transaction, setOpen} : {transaction ?: Transaction, s
 
     const handleTransactionSubmit = (data: z.infer<typeof transactionSchema>) => {
         console.log(data);
+        setOpen(false)
     }
     return (
         <Form {...form}>
