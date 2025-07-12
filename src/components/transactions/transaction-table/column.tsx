@@ -12,6 +12,8 @@ import {
 import {ArrowUpDown, MoreHorizontal, TrendingDown, TrendingUp} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {Checkbox} from "@/components/ui/checkbox";
+import DeleteTransactionModal from "@/components/transactions/delete-transaction-modal/delete-transaction-modal";
+import EditTransactionModal from "@/components/transactions/edit-transaction-modal/edit-transaction-modal";
 
 export const columns: ColumnDef<Transaction>[] = [
     {
@@ -47,7 +49,7 @@ export const columns: ColumnDef<Transaction>[] = [
                 <div
                     className={"flex items-center justify-center gap-x-1 mx-auto bg-destructive/30 rounded-xl px-2 py-1 text-xs w-fit"}>
                     <TrendingDown size={12}/>
-                    <p>خروجی</p>
+                    <p>هزینه</p>
                 </div>
         )
     },
@@ -80,9 +82,15 @@ export const columns: ColumnDef<Transaction>[] = [
                 <ArrowUpDown size={14}/>
             </div>
         ),
-        cell : ({row}) => (
+        cell: ({row}) => (
             <div>
-                {new Date(row.getValue("date")).toLocaleDateString("fa", {year : "2-digit" , month : "long", day: "numeric", hour :"numeric", minute : "numeric"})}
+                {new Date(row.getValue("date")).toLocaleDateString("fa", {
+                    year: "2-digit",
+                    month: "long",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "numeric"
+                })}
             </div>
         ),
         enableHiding: false
@@ -108,18 +116,17 @@ export const columns: ColumnDef<Transaction>[] = [
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align={"start"} className={"text-center"} side={"right"}>
                         <DropdownMenuLabel>عملیات</DropdownMenuLabel>
-                        <DropdownMenuItem className={"justify-center"}>
-                            ویرایش
+                        <DropdownMenuItem className={"justify-center"} asChild>
+                                <EditTransactionModal id={transaction.id} />
                         </DropdownMenuItem>
-                        <DropdownMenuItem variant={"destructive"} className={"justify-center"}
-                                          onClick={() => console.log(transaction)}>
-                            حذف
+                        <DropdownMenuItem variant={"destructive"} className={"justify-center"} asChild>
+                            <DeleteTransactionModal id={transaction.id}/>
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             )
         },
-        enableHiding: false,
-        enableSorting: false,
-    }
+    enableHiding: false,
+    enableSorting: false,
+}
 ]

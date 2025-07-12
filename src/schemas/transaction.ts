@@ -7,3 +7,4 @@ export const transactionSchema = z.object({
     type : z.string().nonempty(),
     note : z.string().nonempty().min(10).max(100),
 })
+

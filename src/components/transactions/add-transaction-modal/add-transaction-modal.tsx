@@ -5,8 +5,9 @@ import TransactionForm from "@/components/transactions/transaction-form/transact
 
 
 function AddTransactionModal() {
+    const [open, setOpen] = React.useState(false);
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild={true}>
                 <Button>تراکنش جدید</Button>
             </DialogTrigger>
@@ -14,7 +15,7 @@ function AddTransactionModal() {
                 <DialogHeader>
                     <DialogTitle>افزودن تراکنش</DialogTitle>
                 </DialogHeader>
-                <TransactionForm/>
+                <TransactionForm setOpen={setOpen}/>
             </DialogContent>
         </Dialog>
     );

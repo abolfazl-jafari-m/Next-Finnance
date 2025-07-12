@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, {Dispatch} from 'react';
 import {useForm} from "react-hook-form";
 import {z} from "zod";
 import {transactionSchema} from "@/schemas/transaction";
@@ -9,26 +9,27 @@ import {Input} from "@/components/ui/input";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import {Button} from "@/components/ui/button";
 import {Textarea} from "@/components/ui/textarea";
+import {Transaction} from "@/interfaces/transactions";
 
 
-function TransactionForm() {
+function TransactionForm({transaction, setOpen} : {transaction ?: Transaction, setOpen  : Dispatch<React.SetStateAction<boolean>>}) {
     const form = useForm<z.infer<typeof transactionSchema>>({
         resolver: zodResolver(transactionSchema),
         defaultValues: {
-            title: "",
-            amount: "",
-            category: "",
-            type: "",
-            note: "",
+            title:transaction ? transaction.title :"",
+            amount: transaction ? transaction.amount : "",
+            category: transaction ? transaction.category :"",
+            type:transaction ? transaction.type : "",
+            note: transaction ?  transaction.note :"",
         }
     })
 
-    const handleAddTransaction = (data: z.infer<typeof transactionSchema>) => {
+    const handleTransactionSubmit = (data: z.infer<typeof transactionSchema>) => {
         console.log(data);
     }
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleAddTransaction)} className={"flex flex-col gap-y-2"}>
+            <form onSubmit={form.handleSubmit(handleTransactionSubmit)} className={"flex flex-col gap-y-2"}>
                 <FormField control={form.control} render={({field}) => (
                     <FormItem>
                         <FormLabel>عنوان</FormLabel>
@@ -57,7 +58,7 @@ function TransactionForm() {
                                     </SelectTrigger>
                                     <SelectContent side={"bottom"} align={"start"}>
                                         <SelectItem value={"income"}>درآمد</SelectItem>
-                                        <SelectItem value={"outcome"}>مخارج</SelectItem>
+                                        <SelectItem value={"outcome"}>هزینه</SelectItem>
                                     </SelectContent>
                                 </Select>
                             </FormControl>
