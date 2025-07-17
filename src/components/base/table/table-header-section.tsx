@@ -5,13 +5,13 @@ import {flexRender} from "@tanstack/react-table";
 
 function TableHeaderSection<TData>({table} : {table :Table<TData>}) {
     return (
-        <TableHeader className={"bg-primary "}>
+        <TableHeader className={"bg-primary"}>
             {
                 table.getHeaderGroups().map(headerGroup => (
                     <TableRow key={headerGroup.id}>
                         {
                             headerGroup.headers.map(header => (
-                                <TableHead key={header.id} className={"text-center text-muted "}>
+                                <TableHead key={header.id} className={"text-center text-background"}>
                                     {
                                         header.isPlaceholder
                                             ?

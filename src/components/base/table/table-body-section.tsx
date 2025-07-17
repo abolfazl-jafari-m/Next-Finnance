@@ -5,7 +5,7 @@ import {flexRender} from "@tanstack/react-table";
 
 function TableBodySection<TData, TValue>({table, columns} : {table :Table<TData> ,columns : ColumnDef<TData , TValue>[]}) {
     return (
-        <TableBody>
+        <TableBody className={"bg-accent "}>
             {
                 table.getRowModel().rows?.length
                     ? (

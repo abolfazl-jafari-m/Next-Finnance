@@ -11,7 +11,7 @@ export const columns: ColumnDef<Bill>[] = [
     {
         id: "select",
         header: ({table}) => (
-            <Checkbox
+            <Checkbox className={"data-[state=checked]:border-white data-[state=checked]:bg-emerald-600 dark:data-[state=checked]:bg-emerald-200 "}
                 checked={table.getIsAllPageRowsSelected() || table.getIsSomePageRowsSelected() && "indeterminate"}
                 onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
                 aria-label={"Select all"}
@@ -104,7 +104,7 @@ export const columns: ColumnDef<Bill>[] = [
         cell: ({row}) => (
             row.getValue("paid") ?
                 <div className={"text-center text-sm text-primary"}>پرداخت شده</div>
-                : <Button variant={"secondary"}  size={"sm"}>پرداخت</Button>
+                : <Button variant={"outline"}  size={"sm"}>پرداخت</Button>
         )
     }
 ]
