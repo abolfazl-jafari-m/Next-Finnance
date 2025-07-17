@@ -5,9 +5,9 @@ import {TrendingDown, TrendingUp} from "lucide-react";
 import {ScrollArea} from "@/components/ui/scroll-area";
 import {Button} from "@/components/ui/button";
 
-function RecentTransactions() {
+function RecentTransactions({className , ...props}: React.ComponentProps<"div">) {
     return (
-        <Card className={"w-full row-start-1 row-end-3"}>
+        <Card className={className} {...props}>
             <CardHeader className={"items-start"}>
                 <CardTitle>
                     اخرین تراکنش ها

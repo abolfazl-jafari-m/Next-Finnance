@@ -5,9 +5,9 @@ import {Badge} from "@/components/ui/badge";
 import {FiTrendingUp} from "react-icons/fi";
 import {Separator} from "@/components/ui/separator";
 
-function TotalBalance() {
+function TotalBalance({className , ...props}: React.ComponentProps<"div">) {
     return (
-        <Card className={"w-full row-start-1 row-end-2"}>
+        <Card className={className} {...props}>
             <CardHeader className={"flex-row"}>
                 <CardTitle>موجود کل حساب</CardTitle>
                 <CardAction className={"flex items-center gap-x-2"}>

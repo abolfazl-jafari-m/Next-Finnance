@@ -31,13 +31,13 @@ const data = [
     {name: "food", value: 1200, fill: "var(--color-food)"},
     {name: "rent", value: 1800, fill: "var(--color-rent)"},
     {name: "joy", value: 500, fill: "var(--color-joy)"},
-    {name: "transportation", value: 450,fill:"var(--color-transportation)"},
-    {name: "shopping", value: 950,fill:"var(--color-shopping)"},
+    {name: "transportation", value: 450, fill: "var(--color-transportation)"},
+    {name: "shopping", value: 950, fill: "var(--color-shopping)"},
 ]
 
-function CategoryChart() {
+function CategoryChart({className, ...props}: React.ComponentProps<"div">) {
     return (
-        <Card className={"w-full col-span-1 row-start-3 row-end-4"}>
+        <Card className={className}  {...props}>
             <CardHeader>
                 <CardTitle>دسته بندی مخارج</CardTitle>
                 <CardDescription>دسته بندی براساس نوع خرید شما</CardDescription>
@@ -46,9 +46,10 @@ function CategoryChart() {
                 <ChartContainer config={config}
                                 className="[&_.recharts-pie-label-text]:fill-foreground 2  mx-auto aspect-square pb-0">
                     <ResponsiveContainer width={"100%"}>
-                        <PieChart >
+                        <PieChart>
                             <ChartTooltip content={<ChartTooltipContent indicator={"dot"} hideLabel={true}/>}/>
-                            <Pie dataKey={"value"} nameKey={"name"} data={data} label labelLine={false} cx={"50%"} cy={"50%"}/>
+                            <Pie dataKey={"value"} nameKey={"name"} data={data} label labelLine={false} cx={"50%"}
+                                 cy={"50%"}/>
                         </PieChart>
                     </ResponsiveContainer>
                 </ChartContainer>

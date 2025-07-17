@@ -3,9 +3,9 @@ import {Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle} f
 import {Button} from "@/components/ui/button";
 import {Separator} from "@/components/ui/separator";
 
-function UpcomingBills() {
+function UpcomingBills({className , ...props}: React.ComponentProps<"div">) {
     return (
-        <Card className={"w-full row-start-1 row-end-3"}>
+        <Card className={className} {...props}>
             <CardHeader>
                 <CardTitle>
                     قبض های پیش رو

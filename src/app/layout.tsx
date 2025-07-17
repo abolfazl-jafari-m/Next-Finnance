@@ -7,7 +7,7 @@ import NextThemeProvider from "@/components/providers/next-theme-provider";
 
 
 export const metadata: Metadata = {
-    title: "NV Finance",
+    title: "دستیار مالی ان وی",
     description: "Finance App For Managing Your Money",
 };
 
@@ -22,7 +22,8 @@ export default function RootLayout({
               cz-shortcut-listen="true"
               className={`antialiased ${vazir.className}`}
         >
-        <NextThemeProvider defaultTheme={"system"} enableSystem={true} disableTransitionOnChange={true} attribute={"class"}>
+        <NextThemeProvider defaultTheme={"system"} enableSystem={true} disableTransitionOnChange={true}
+                           attribute={"class"}>
             {children}
         </NextThemeProvider>
         </body>

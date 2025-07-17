@@ -39,9 +39,9 @@ const data = [
     {month: "اسفند", income: 214, outcome: 140},
 ]
 
-function ComparisonsCharts() {
+function ComparisonsCharts({className , ...props}: React.ComponentProps<"div">) {
     return (
-        <Card className={"w-full col-span-3 row-start-3"}>
+        <Card className={className} {...props}>
             <CardHeader className={"flex items-center justify-between flex-row"}>
                 <div className={"flex flex-col gap-3"}>
                     <CardTitle>گزارش مالی</CardTitle>

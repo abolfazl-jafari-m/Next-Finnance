@@ -28,9 +28,9 @@ function RegisterForm() {
         console.log(data);
     }
     return (
-        <Card className={"w-1/4 pb-2 gap-5"}>
+        <Card className={"w-1/4 max-xl:w-1/3 max-lg:w-2/5 max-md:w-1/2 max-sm:w-3/4 pb-2 gap-5"}>
             <CardHeader>
-                <CardTitle className={"text-center"}>ورود به حساب کاربری</CardTitle>
+                <CardTitle className={"text-center"}>ساخت حساب کاربری</CardTitle>
             </CardHeader>
             <CardContent className={"px-3"}>
                 <Form {...form}>

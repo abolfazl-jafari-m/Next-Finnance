@@ -5,14 +5,14 @@ import {Calendar} from "@/components/ui/calendar";
 import {Button} from "@/components/ui/button";
 
 
-function Calender() {
+function Calender({className , ...props}: React.ComponentProps<"div">) {
     const today =new Date();
     const  [month, setMonth] = useState(today) ;
     const goToday = ()=>{
         setMonth(today) ;
     }
     return (
-        <Card className={"w-full row-start-1 row-end-3 "}>
+        <Card className={className} {...props}>
             <CardContent>
                 <Calendar className={"w-full"} month={month} onMonthChange={setMonth}/>
             </CardContent>
