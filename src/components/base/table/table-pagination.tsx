@@ -6,7 +6,7 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/c
 
 function TablePagination<TData>({table}: { table: Table<TData> }) {
     return (
-        <div className={"flex items-center justify-between px-5 my-2"}>
+        <div className={"flex items-center justify-between px-5 my-2 max-md:flex-col-reverse max-md:gap-3 max-md:px-2 max-md:items-start"}>
             <div className={"flex items-center gap-x-4"}>
                 <div className={"flex items-center gap-x-2"}>
                     <Button variant={"outline"} size={"sm"}

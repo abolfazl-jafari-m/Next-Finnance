@@ -2,19 +2,23 @@ import WalletBalance from '@/components/wallet/wallet-balance/wallet-balance';
 import React from 'react';
 import WalletCharts from "@/components/wallet/wallet-charts/wallet-charts";
 import {Card, CardContent} from "@/components/ui/card";
+import {Metadata} from "next";
 
-function BudgetPage() {
+export const metadata: Metadata = {
+    title: "کیف پول من"
+}
+
+function BalancePage() {
     return (
-        <div className={"p-10 space-y-10"}>
-            <h2 className={"font-semibold text-3xl"}>کیف پول من</h2>
-            <Card className={"w-2/3 mx-auto border-none shadow-none"}>
+        <main className={"p-10 space-y-7"}>
+            <Card className={"lg:w-3/4 xl:w-2/3 mx-auto border-none shadow-none"}>
                 <CardContent className={"space-y-5"}>
                     <WalletBalance className={"w-full"}/>
-                    <WalletCharts className={" w-full"} />
+                    <WalletCharts className={" w-full"}/>
                 </CardContent>
             </Card>
-        </div>
+        </main>
     );
 }
 
-export default BudgetPage;
+export default BalancePage;

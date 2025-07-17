@@ -21,7 +21,7 @@ export const columns: ColumnDef<Transaction>[] = [
         enableHiding: false,
         enableSorting: false,
         header: ({table}) => (
-            <Checkbox className={"data-[state=checked]:border-white data-[state=checked]:bg-emerald-600 dark:data-[state=checked]:bg-emerald-200"}
+            <Checkbox className={"data-[state=checked]:border-white data-[state=checked]:bg-emerald-600 dark:data-[state=checked]:bg-emerald-200 m-1.5"}
                 checked={table.getIsAllPageRowsSelected() || table.getIsSomePageRowsSelected() && "indeterminate"}
                 onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
                 aria-label={"Select all"}

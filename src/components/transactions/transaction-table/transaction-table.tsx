@@ -46,7 +46,7 @@ function TransactionTable<TData, TValue>({columns, data}: TableProps<TData, TVal
     })
     return (
         <div className={"p-10 "}>
-            <div className={"flex items-center justify-between"}>
+            <div className={"flex items-center justify-between max-md:flex-col max-md:items-start"}>
                 <AddTransactionModal/>
                 <TableFiltering table={table}/>
             </div>

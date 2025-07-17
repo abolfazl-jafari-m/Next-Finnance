@@ -8,26 +8,16 @@ import {
 } from "@/components/ui/sidebar";
 import Image from "next/image";
 import logo from "@/assets/images/Logo.svg"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut,
-    DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
-import {Card} from "@/components/ui/card";
-import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
-import {BiExit} from "react-icons/bi";
+
 import {
     BadgeDollarSign,
     BanknoteArrowUp,
-    EllipsisVertical,
     LayoutDashboard,
     Settings,
     Wallet
 } from "lucide-react";
 import AppSidebarButton from "@/components/dash/app-sidebar/app-sidebar-button";
-import Link from "next/link";
+import UserActions from "@/components/dash/user-actions/user-actions";
 
 
 function AppSidebar() {
@@ -77,34 +67,7 @@ function AppSidebar() {
                 </SidebarGroup>
             </SidebarContent>
             <SidebarFooter className={"py-4"}>
-                <DropdownMenu dir={"rtl"}>
-                    <DropdownMenuTrigger>
-                        <Card
-                            className={"rounded-sm  px-2 py-1.5 w-full flex items-center flex-row cursor-pointer justify-between "}>
-                            <div className={"flex items-center gap-1"}>
-                                <Avatar>
-                                    <AvatarImage src={"https://github.com/shadcn.png"}/>
-                                    <AvatarFallback>NV</AvatarFallback>
-                                </Avatar>
-                                <div className={"flex flex-col"}>
-                                    <h3 className={"font-semibold text-sm"}>Abolfazl</h3>
-                                    <p className={"text-xs"}>abolfazljafari563@gmail.com</p>
-                                </div>
-                            </div>
-                            <EllipsisVertical size={14}/>
-                        </Card>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent side={"left"} align={"end"}>
-                        <DropdownMenuLabel>حساب کاربری من</DropdownMenuLabel>
-                        <DropdownMenuItem asChild={true}><Link href={"/dashboard/settings?tab=profile"}>پروفایل</Link></DropdownMenuItem>
-                        <DropdownMenuItem>اعلان ها</DropdownMenuItem>
-                        <DropdownMenuSeparator/>
-                        <DropdownMenuItem variant={"destructive"}>
-                            خروج
-                            <DropdownMenuShortcut className={"ml-0 mr-auto"}><BiExit/></DropdownMenuShortcut>
-                        </DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
+               <UserActions />
             </SidebarFooter>
         </Sidebar>
     );
