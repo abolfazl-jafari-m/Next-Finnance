@@ -16,7 +16,7 @@ function UpcomingBills() {
                 </CardAction>
             </CardHeader>
             <Separator/>
-            <CardContent className={"flex flex-col space-y-6"}>
+            <CardContent className={"flex flex-col space-y-3"}>
                 <div className={"flex text-sm gap-x-2 items-center p-2 justify-between bg-secondary rounded-md shadow shadow-accent ring-ring/30 ring-1 h-14 cursor-pointer"}>
                     <div className={"bg-gray-200 text-primary rounded-sm aspect-square flex items-center justify-center flex-col p-1 w-10 h-10"}>
                         <p className={" font-semibold"} >14</p>

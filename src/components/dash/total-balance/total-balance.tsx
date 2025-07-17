@@ -18,7 +18,7 @@ function TotalBalance() {
             <Separator/>
             <CardContent className={"flex flex-row justify-between items-center"}>
                 <div>
-                    <p className={"text-3xl"}>20000000</p><span>تومان</span>
+                    <p className={"text-3xl"}>{Intl.NumberFormat("fa").format(23402350)}</p><span>تومان</span>
                 </div>
                 <div className={"bg-gray-200 p-2 rounded-full"}>
                     <Wallet size={24}/>
