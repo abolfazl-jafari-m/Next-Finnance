@@ -27,6 +27,7 @@ import {
     Wallet
 } from "lucide-react";
 import AppSidebarButton from "@/components/dash/app-sidebar/app-sidebar-button";
+import Link from "next/link";
 
 
 function AppSidebar() {
@@ -95,7 +96,7 @@ function AppSidebar() {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent side={"left"} align={"end"}>
                         <DropdownMenuLabel>حساب کاربری من</DropdownMenuLabel>
-                        <DropdownMenuItem>پروفایل</DropdownMenuItem>
+                        <DropdownMenuItem asChild={true}><Link href={"/dashboard/settings?tab=profile"}>پروفایل</Link></DropdownMenuItem>
                         <DropdownMenuItem>اعلان ها</DropdownMenuItem>
                         <DropdownMenuSeparator/>
                         <DropdownMenuItem variant={"destructive"}>
