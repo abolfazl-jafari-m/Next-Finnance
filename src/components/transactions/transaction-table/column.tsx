@@ -2,18 +2,12 @@
 
 import {ColumnDef} from "@tanstack/table-core";
 import {Transaction} from "@/interfaces/transactions";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
-import {ArrowUpDown, MoreHorizontal, TrendingDown, TrendingUp} from "lucide-react";
-import {Button} from "@/components/ui/button";
+
+import {ArrowUpDown, TrendingDown, TrendingUp} from "lucide-react";
+
 import {Checkbox} from "@/components/ui/checkbox";
-import DeleteTransactionModal from "@/components/transactions/delete-transaction-modal/delete-transaction-modal";
-import EditTransactionModal from "@/components/transactions/edit-transaction-modal/edit-transaction-modal";
+
+import TransactionActions from "@/components/transactions/transaction-actions/transaction-actions";
 
 export const columns: ColumnDef<Transaction>[] = [
     {
@@ -108,22 +102,7 @@ export const columns: ColumnDef<Transaction>[] = [
         cell: ({row}) => {
             const transaction = row.original;
             return (
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild={true}>
-                        <Button variant={"ghost"} size={"sm"} className={"border-none"}>
-                            <MoreHorizontal/>
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align={"start"} className={"text-center"} side={"right"}>
-                        <DropdownMenuLabel>عملیات</DropdownMenuLabel>
-                        <DropdownMenuItem className={"justify-center"} asChild>
-                                <EditTransactionModal id={transaction.id} />
-                        </DropdownMenuItem>
-                        <DropdownMenuItem variant={"destructive"} className={"justify-center"} asChild>
-                            <DeleteTransactionModal id={transaction.id}/>
-                        </DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
+                <TransactionActions id={transaction.id} />
             )
         },
     enableHiding: false,

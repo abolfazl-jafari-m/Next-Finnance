@@ -8,11 +8,13 @@ import {
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import {Button} from "@/components/ui/button";
+import {useTranslations} from "next-intl";
 
 function TableFiltering<TData>({table}: { table: Table<TData> }) {
+    const t = useTranslations("dashboard.transactions.searchTransactions")
     return (
         <div className={"flex items-center gap-x-5 my-5"}>
-            <Input placeholder={"جستجو.."}
+            <Input placeholder={t("search")}
                    value={(table.getColumn("title")?.getFilterValue() as string)}
                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
                        table.getColumn("title")?.setFilterValue(e.target.value)
@@ -22,7 +24,7 @@ function TableFiltering<TData>({table}: { table: Table<TData> }) {
             <DropdownMenu>
                 <DropdownMenuTrigger asChild={true}>
                     <Button size={"sm"} className={"ring-0 border-none"}>
-                        ستون ها
+                        {t("cols")}
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent side={"left"}>

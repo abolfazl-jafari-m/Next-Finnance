@@ -36,38 +36,83 @@
         "notifications": "اعلان ها"
       }
     },
-    "mainPage" : {
-      "totalBalance" : {
-        "balance" : "موجودی حساب",
-        "currency"  : "تومان"
+    "mainPage": {
+      "totalBalance": {
+        "balance": "موجودی حساب",
+        "currency": "تومان"
       },
-      "lastTransactions" : {
-        "seeAll" : "مشاهده همه",
-        "title" : "آخرین تراکنش ها",
-        "currency" : "تومان"
+      "lastTransactions": {
+        "seeAll": "مشاهده همه",
+        "title": "آخرین تراکنش ها",
+        "currency": "تومان"
       },
-      "upcomingBills" : {
-        "title" : "قبض های پیش رو",
-        "description" : "قبض های ماه جاری",
-        "seeAll" : "مشاهده همه",
-        "details" : "جزیئات",
-        "currency" : "تومان"
+      "upcomingBills": {
+        "title": "قبض های پیش رو",
+        "description": "قبض های ماه جاری",
+        "seeAll": "مشاهده همه",
+        "details": "جزیئات",
+        "currency": "تومان"
       },
-      "charts" : {
-        "compilation" : {
-          "title" : "گرازش مالی",
-          "filter" : "فیلتر",
+      "charts": {
+        "compilation": {
+          "title": "گرازش مالی",
+          "filter": "فیلتر",
           "last-three-month": "سه ماه اخیر",
           "last-six-month": "شش ماه اخیر",
           "full-year": "یک سال اخیر"
         },
-        "category" : {
-          "title" : "دسته بندی مخارج",
-          "description" : "دست بندی بر اساس نوع تراکنش"
+        "category": {
+          "title": "دسته بندی مخارج",
+          "description": "دست بندی بر اساس نوع تراکنش"
         }
       },
-      "calender"  : {
-        "goToday" : "برو به امروز"
+      "calender": {
+        "goToday": "برو به امروز"
+      }
+    },
+    "transactions": {
+      "addTransaction": {
+        "add": "تراکنش جدید",
+        "transaction-form": {
+          "add": "افزودن تراکنش",
+          "edit": "ویرایش تراکنش",
+          "title": "عنوان",
+          "titlePlaceholder": "عنوان تراکنش",
+          "amount": "مقدار",
+          "amountPlaceholder": "مقدار تراکنش",
+          "categoryPlaceholder": "  دسته بندی تراکنش",
+          "income": "درآمد",
+          "outcome": "هزینه",
+          "typePlaceholder": " نوع تراکنش",
+          "note": "یادداشت",
+          "notePlaceholder": "توضیح کوتاه درباره ی تراکنش",
+          "shopping": "خرید",
+          "rent": "اجاره",
+          "enjoyment": "تفریح",
+          "food": "غذا",
+          "others": "سایر",
+          "save" : "ذخیره"
+        }
+      },
+      "editTransactions" : {
+        "title" : "ویرایش تراکنش",
+        "edit"  : "ویرایش"
+      },
+      "deleteTransaction" : {
+        "title" : "آیا از تصمیم خود اطمینان دارید؟",
+        "description": "با تایید اینکار این رکورد به صورت دائمی از پنل شما حذف خواهد گردید و امکان دسترسی دوباره وجود ندارد",
+        "cancel" : "انصراف",
+        "delete" : "حذف"
+      },
+      "searchTransactions"  : {
+        "cols" : "ستون ها",
+        "search" : "جستجو..."
+      },
+      "pagination"  : {
+        "sheet" : "صفحه",
+        "of" : "از",
+        "row": "ردیف",
+        "selected" : "انتخاب شده"
       }
     }
   }

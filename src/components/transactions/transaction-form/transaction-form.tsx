@@ -10,9 +10,11 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/c
 import {Button} from "@/components/ui/button";
 import {Textarea} from "@/components/ui/textarea";
 import {Transaction} from "@/interfaces/transactions";
+import {useTranslations} from "next-intl";
 
 
 function TransactionForm({transaction, setOpen} : {transaction ?: Transaction, setOpen  : Dispatch<React.SetStateAction<boolean>>}) {
+    const t= useTranslations("dashboard.transactions.addTransaction.transaction-form");
     const form = useForm<z.infer<typeof transactionSchema>>({
         resolver: zodResolver(transactionSchema),
         defaultValues: {
@@ -33,18 +35,18 @@ function TransactionForm({transaction, setOpen} : {transaction ?: Transaction, s
             <form onSubmit={form.handleSubmit(handleTransactionSubmit)} className={"flex flex-col gap-y-2"}>
                 <FormField control={form.control} render={({field}) => (
                     <FormItem>
-                        <FormLabel>عنوان</FormLabel>
+                        <FormLabel>{t("title")}</FormLabel>
                         <FormControl>
-                            <Input placeholder={"عنوان تراکنش"} {...field}/>
+                            <Input placeholder={t("titlePlaceholder")} {...field}/>
                         </FormControl>
                         <FormMessage/>
                     </FormItem>
                 )} name={"title"}/>
                 <FormField control={form.control} render={({field}) => (
                     <FormItem>
-                        <FormLabel>مقدار</FormLabel>
+                        <FormLabel>{t("amount")}</FormLabel>
                         <FormControl>
-                            <Input placeholder={"مقدار تراکنش"} {...field} />
+                            <Input placeholder={t("amountPlaceholder")} {...field} />
                         </FormControl>
                         <FormMessage/>
                     </FormItem>
@@ -55,11 +57,11 @@ function TransactionForm({transaction, setOpen} : {transaction ?: Transaction, s
                             <FormControl>
                                 <Select onValueChange={field.onChange} defaultValue={field.value} dir={"rtl"}>
                                     <SelectTrigger className={"w-full"}>
-                                        <SelectValue placeholder={"نوع تراکنش"}/>
+                                        <SelectValue placeholder={t("typePlaceholder")}/>
                                     </SelectTrigger>
                                     <SelectContent side={"bottom"} align={"start"}>
-                                        <SelectItem value={"income"}>درآمد</SelectItem>
-                                        <SelectItem value={"outcome"}>هزینه</SelectItem>
+                                        <SelectItem value={"income"}>{t("income")}</SelectItem>
+                                        <SelectItem value={"outcome"}>{t("outcome")}</SelectItem>
                                     </SelectContent>
                                 </Select>
                             </FormControl>
@@ -71,14 +73,14 @@ function TransactionForm({transaction, setOpen} : {transaction ?: Transaction, s
                             <FormControl >
                                 <Select dir={"rtl"} onValueChange={field.onChange} defaultValue={field.value} >
                                     <SelectTrigger className={"w-full"}>
-                                        <SelectValue placeholder={"دسته بندی تراکنش"}/>
+                                        <SelectValue placeholder={t("categoryPlaceholder")}/>
                                     </SelectTrigger>
                                     <SelectContent side={"bottom"} align={"start"}>
-                                        <SelectItem value={"rent"}>اجاره</SelectItem>
-                                        <SelectItem value={"shopping"}>خرید</SelectItem>
-                                        <SelectItem value={"enjoyment"}>تفریح</SelectItem>
-                                        <SelectItem value={"food"}>غذا</SelectItem>
-                                        <SelectItem value={"others"}>سایر</SelectItem>
+                                        <SelectItem value={"rent"}>{t("rent")}</SelectItem>
+                                        <SelectItem value={"shopping"}>{t("shopping")}</SelectItem>
+                                        <SelectItem value={"enjoyment"}>{t("enjoyment")}</SelectItem>
+                                        <SelectItem value={"food"}>{t("food")}</SelectItem>
+                                        <SelectItem value={"others"}>{t("others")}</SelectItem>
                                     </SelectContent>
                                 </Select>
                             </FormControl>
@@ -88,14 +90,14 @@ function TransactionForm({transaction, setOpen} : {transaction ?: Transaction, s
                 </div>
                 <FormField render={({field}) => (
                     <FormItem>
-                        <FormLabel>یادداشت</FormLabel>
+                        <FormLabel>{t("note")}</FormLabel>
                         <FormControl>
-                            <Textarea placeholder={"توضیح کوتاه درباره تراکنش"} {...field}/>
+                            <Textarea placeholder={t("notePlaceholder")} {...field}/>
                         </FormControl>
                         <FormMessage/>
                     </FormItem>
                 )} name={"note"} control={form.control}/>
-                <Button>ذخیره</Button>
+                <Button>{t("save")}</Button>
             </form>
         </Form>
     );

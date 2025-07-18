@@ -10,8 +10,10 @@ import {
     DialogTrigger
 } from "@/components/ui/dialog";
 import {Button} from "@/components/ui/button";
+import {useTranslations} from "next-intl";
 
 function DeleteTransactionModal({id}: { id: string }) {
+    const t =useTranslations("dashboard.transactions.deleteTransaction");
     const [open, setOpen] = useState<boolean>(false);
     const handleDelete = () => {
         console.log(id)
@@ -25,15 +27,14 @@ function DeleteTransactionModal({id}: { id: string }) {
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>آیا از تصمیم خود اطمینان دارید؟</DialogTitle>
-                    <DialogDescription>با تایید اینکار این رکورد به صورت دائمی از پنل شما حذف خواهد گردید و امکان دسترسی
-                        دوباره وجود ندارد</DialogDescription>
+                    <DialogTitle>{t("title")}</DialogTitle>
+                    <DialogDescription>{t("description")}</DialogDescription>
                 </DialogHeader>
                 <DialogFooter >
                     <DialogClose asChild={true}>
-                        <Button variant={"secondary"}>انصراف</Button>
+                        <Button variant={"secondary"}>{t("cancel")}</Button>
                     </DialogClose>
-                    <Button onClick={handleDelete} variant={"destructive"}>حذف</Button>
+                    <Button onClick={handleDelete} variant={"destructive"}>{t("delete")}</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>
