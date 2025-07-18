@@ -1,0 +1,74 @@
+{
+  "onboarding": {
+    "please-wait": "لطفن صبر کنید",
+    "title": "دستیار مالی ان وی",
+    "start": "شروع کنید"
+  },
+  "login": {
+    "title": "ورود به حساب کاربری",
+    "login": "ورود",
+    "notHavingAccount": "هنوز ثبت نام نکرده اید؟",
+    "emailPlaceholder": "ایمیل خود را وارد کنید",
+    "passwordPlaceholder": "رمز عبور خود را وارد کنید"
+  },
+  "register": {
+    "title": "ساخت حساب کاربری",
+    "register": "ثبت نام",
+    "alreadyHavingAccount": "قبلا ثبت نام کرده اید؟",
+    "emailPlaceholder": "ایمیل خود را وارد کنید",
+    "passwordPlaceholder": "رمز عبور خود را وارد کنید",
+    "phonePlaceholder": "تلفن خود را وارد کنید",
+    "confirmPassPlaceholder": "رمز عبور خود را تکرار کنید",
+    "usernamePlaceholder": "نام کاربری خود را وارد کنید"
+  },
+  "dashboard": {
+    "sidebar": {
+      "title": "دستبیار مالی ان وی",
+      "dashboard": "داشبورد",
+      "transactions": "تراکنش ها",
+      "bills": "قبض ها",
+      "wallet": "کیف پول",
+      "settings": "تنظیمات",
+      "user-actions": {
+        "myAccount": "حساب کاربری من",
+        "profile": "پروفایل",
+        "logOut": "خروج",
+        "notifications": "اعلان ها"
+      }
+    },
+    "mainPage" : {
+      "totalBalance" : {
+        "balance" : "موجودی حساب",
+        "currency"  : "تومان"
+      },
+      "lastTransactions" : {
+        "seeAll" : "مشاهده همه",
+        "title" : "آخرین تراکنش ها",
+        "currency" : "تومان"
+      },
+      "upcomingBills" : {
+        "title" : "قبض های پیش رو",
+        "description" : "قبض های ماه جاری",
+        "seeAll" : "مشاهده همه",
+        "details" : "جزیئات",
+        "currency" : "تومان"
+      },
+      "charts" : {
+        "compilation" : {
+          "title" : "گرازش مالی",
+          "filter" : "فیلتر",
+          "last-three-month": "سه ماه اخیر",
+          "last-six-month": "شش ماه اخیر",
+          "full-year": "یک سال اخیر"
+        },
+        "category" : {
+          "title" : "دسته بندی مخارج",
+          "description" : "دست بندی بر اساس نوع تراکنش"
+        }
+      },
+      "calender"  : {
+        "goToday" : "برو به امروز"
+      }
+    }
+  }
+}

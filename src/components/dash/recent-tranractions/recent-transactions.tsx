@@ -4,16 +4,18 @@ import {Separator} from "@/components/ui/separator";
 import {TrendingDown, TrendingUp} from "lucide-react";
 import {ScrollArea} from "@/components/ui/scroll-area";
 import {Button} from "@/components/ui/button";
+import {useTranslations} from "next-intl";
 
 function RecentTransactions({className , ...props}: React.ComponentProps<"div">) {
+    const  t = useTranslations("dashboard.mainPage.lastTransactions")
     return (
         <Card className={className} {...props}>
             <CardHeader className={"items-start"}>
                 <CardTitle>
-                    اخرین تراکنش ها
+                    {t("title")}
                 </CardTitle>
                 <CardAction>
-                    <Button variant={"secondary"} size={"sm"}>مشاهده همه</Button>
+                    <Button variant={"secondary"} size={"sm"}>{t("seeAll")}</Button>
                 </CardAction>
             </CardHeader>
             <Separator/>
@@ -28,7 +30,7 @@ function RecentTransactions({className , ...props}: React.ComponentProps<"div">)
                                     <p className={"text-xs text-gray-600"}>13 تیر 1404</p>
                                 </div>
                             </div>
-                                <p className={"text-sm"}>2345000 تومان</p>
+                                <p className={"text-sm"}>2345000 {t("currency")}</p>
                         </div>
                         <div className={"flex items-center justify-between bg-secondary rounded-sm p-2"}>
                             <div className={"flex items-center gap-x-1.5"}>

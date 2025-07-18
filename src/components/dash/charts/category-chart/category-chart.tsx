@@ -3,6 +3,7 @@ import React from 'react';
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent} from "@/components/ui/chart";
 import {Pie, PieChart, ResponsiveContainer} from "recharts";
+import {useTranslations} from "next-intl";
 
 const config = {
     food: {
@@ -36,11 +37,12 @@ const data = [
 ]
 
 function CategoryChart({className, ...props}: React.ComponentProps<"div">) {
+    const t = useTranslations("dashboard.mainPage.charts.category")
     return (
         <Card className={className}  {...props}>
             <CardHeader>
-                <CardTitle>دسته بندی مخارج</CardTitle>
-                <CardDescription>دسته بندی براساس نوع خرید شما</CardDescription>
+                <CardTitle>{t("title")}</CardTitle>
+                <CardDescription>{t("description")}</CardDescription>
             </CardHeader>
             <CardContent className={"pt-5 px-2"}>
                 <ChartContainer config={config}

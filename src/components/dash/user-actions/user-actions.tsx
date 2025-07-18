@@ -11,8 +11,10 @@ import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import {EllipsisVertical} from "lucide-react";
 import Link from "next/link";
 import {BiExit} from "react-icons/bi";
+import {useTranslations} from "next-intl";
 
 function UserActions() {
+    const t = useTranslations("dashboard.sidebar.user-actions")
     return (
         <DropdownMenu dir={"rtl"}>
             <DropdownMenuTrigger>
@@ -32,12 +34,12 @@ function UserActions() {
                 </Card>
             </DropdownMenuTrigger>
             <DropdownMenuContent side={"left"} align={"end"}>
-                <DropdownMenuLabel>حساب کاربری من</DropdownMenuLabel>
-                <DropdownMenuItem asChild={true}><Link href={"/dashboard/settings?tab=profile"}>پروفایل</Link></DropdownMenuItem>
-                <DropdownMenuItem>اعلان ها</DropdownMenuItem>
+                <DropdownMenuLabel>{t("myAccount")}</DropdownMenuLabel>
+                <DropdownMenuItem asChild={true}><Link href={"/dashboard/settings?tab=profile"}>{t("profile")}</Link></DropdownMenuItem>
+                <DropdownMenuItem>{t("notifications")}</DropdownMenuItem>
                 <DropdownMenuSeparator/>
                 <DropdownMenuItem variant={"destructive"}>
-                    خروج
+                    {t("logOut")}
                     <DropdownMenuShortcut className={"ml-0 mr-auto"}><BiExit/></DropdownMenuShortcut>
                 </DropdownMenuItem>
             </DropdownMenuContent>

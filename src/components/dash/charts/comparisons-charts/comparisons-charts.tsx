@@ -11,6 +11,7 @@ import {
 import {ChartContainer} from "@/components/ui/chart";
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis} from "recharts";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
+import {useTranslations} from "next-intl";
 
 const config = {
     outcome: {
@@ -40,23 +41,24 @@ const data = [
 ]
 
 function ComparisonsCharts({className , ...props}: React.ComponentProps<"div">) {
+    const t = useTranslations("dashboard.mainPage.charts.compilation")
     return (
         <Card className={className} {...props}>
             <CardHeader className={"flex items-center justify-between flex-row"}>
                 <div className={"flex flex-col gap-3"}>
-                    <CardTitle>گزارش مالی</CardTitle>
+                    <CardTitle>{t("title")}</CardTitle>
                     <CardDescription>{new Date(Date.now()).toLocaleDateString("fa", {
                         year: "numeric"
                     })}</CardDescription>
                 </div>
                 <Select dir={"rtl"}>
                     <SelectContent side={"right"}>
-                        <SelectItem value={"3m"}>سه ماه اخیر</SelectItem>
-                        <SelectItem value={"6m"}>شش ماه اخیر</SelectItem>
-                        <SelectItem value={"1y"}>یک سال اخیر</SelectItem>
+                        <SelectItem value={"3m"}>{t("last-three-month")}</SelectItem>
+                        <SelectItem value={"6m"}>{t("last-six-month")}</SelectItem>
+                        <SelectItem value={"1y"}>{t("full-year")}</SelectItem>
                     </SelectContent>
                     <SelectTrigger>
-                        <SelectValue placeholder={"فیلتر"}/>
+                        <SelectValue placeholder={t("filter")}/>
                     </SelectTrigger>
                 </Select>
             </CardHeader>

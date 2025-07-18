@@ -18,15 +18,17 @@ import {
 } from "lucide-react";
 import AppSidebarButton from "@/components/dash/app-sidebar/app-sidebar-button";
 import UserActions from "@/components/dash/user-actions/user-actions";
+import {useTranslations} from "next-intl";
 
 
 function AppSidebar() {
+    const t = useTranslations("dashboard.sidebar")
     return (
         <Sidebar side={"right"}>
             <SidebarHeader className={"flex items-center justify-center flex-row p-4 gap-x-4 text-white bg-teal-950"}>
                 <Image src={logo.src} alt={"logo"} width={32} height={32}
                        className={"bg-white p-1.5 rounded-md shadow-black shadow-md"}/>
-                <h1 className={"font-bold text-lg"}>دستیار مالی ان وی</h1>
+                <h1 className={"font-bold text-lg"}>{t("title")}</h1>
             </SidebarHeader>
             <SidebarContent>
                 <SidebarGroup>
@@ -35,31 +37,31 @@ function AppSidebar() {
                             <SidebarMenuItem>
                                 <AppSidebarButton href={"/dashboard"}>
                                     <LayoutDashboard/>
-                                    <span>داشبورد</span>
+                                    <span>{t("dashboard")}</span>
                                 </AppSidebarButton>
                             </SidebarMenuItem>
                             <SidebarMenuItem>
                                 <AppSidebarButton href={"/dashboard/transactions"}>
                                     <BadgeDollarSign/>
-                                    <span>تراکنش ها</span>
+                                    <span>{t("transactions")}</span>
                                 </AppSidebarButton>
                             </SidebarMenuItem>
                             <SidebarMenuItem>
                                 <AppSidebarButton href={"/dashboard/bills"}>
                                     <BanknoteArrowUp/>
-                                    <span>قبض ها</span>
+                                    <span>{t("bills")}</span>
                                 </AppSidebarButton>
                             </SidebarMenuItem>
                             <SidebarMenuItem>
                                 <AppSidebarButton href={"/dashboard/wallet"}>
                                     <Wallet/>
-                                    <span>کیف پول</span>
+                                    <span>{t("wallet")}</span>
                                 </AppSidebarButton>
                             </SidebarMenuItem>
                             <SidebarMenuItem>
                                 <AppSidebarButton href={"/dashboard/settings"}>
                                     <Settings/>
-                                    <span>تنظیمات</span>
+                                    <span>{t("settings")}</span>
                                 </AppSidebarButton>
                             </SidebarMenuItem>
                         </SidebarMenu>

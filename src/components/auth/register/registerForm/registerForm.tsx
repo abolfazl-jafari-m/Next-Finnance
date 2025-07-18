@@ -12,8 +12,10 @@ import {FcGoogle} from "react-icons/fc";
 import {FiGithub} from "react-icons/fi";
 import Link from "next/link";
 import {PasswordInput} from "@/components/ui/password-input";
+import {useTranslations} from "next-intl";
 
 function RegisterForm() {
+    const t = useTranslations("register");
     const form = useForm<z.infer<typeof registerSchemas>>({
         resolver: zodResolver(registerSchemas),
         defaultValues: {
@@ -30,7 +32,7 @@ function RegisterForm() {
     return (
         <Card className={"w-1/4 max-xl:w-1/3 max-lg:w-2/5 max-md:w-1/2 max-sm:w-3/4 pb-2 gap-5"}>
             <CardHeader>
-                <CardTitle className={"text-center"}>ساخت حساب کاربری</CardTitle>
+                <CardTitle className={"text-center"}>{t("title")}</CardTitle>
             </CardHeader>
             <CardContent className={"px-3"}>
                 <Form {...form}>
@@ -38,7 +40,7 @@ function RegisterForm() {
                         <FormField control={form.control} render={({field}) => (
                             <FormItem>
                                 <FormControl>
-                                    <Input placeholder={"نام کاربری خود را وارد کنید"} {...field}/>
+                                    <Input placeholder={t("usernamePlaceholder")} {...field}/>
                                 </FormControl>
                                 <FormMessage/>
                             </FormItem>
@@ -46,7 +48,7 @@ function RegisterForm() {
                         <FormField control={form.control} render={({field}) => (
                             <FormItem>
                                 <FormControl>
-                                    <Input placeholder={"ایمیل خود را وارد کنید"} {...field}/>
+                                    <Input placeholder={t("emailPlaceholder")} {...field}/>
                                 </FormControl>
                                 <FormMessage/>
                             </FormItem>
@@ -54,7 +56,7 @@ function RegisterForm() {
                         <FormField control={form.control} render={({field}) => (
                             <FormItem>
                                 <FormControl>
-                                    <Input placeholder={"تلفن خود را وارد کنید"} {...field}/>
+                                    <Input placeholder={t("phonePlaceholder")} {...field}/>
                                 </FormControl>
                                 <FormMessage/>
                             </FormItem>
@@ -62,7 +64,7 @@ function RegisterForm() {
                         <FormField control={form.control} render={({field}) => (
                             <FormItem>
                                 <FormControl>
-                                    <PasswordInput placeholder={"رمز عبور خود را وارد کنید"}  {...field}/>
+                                    <PasswordInput placeholder={t("passwordPlaceholder")}  {...field}/>
                                 </FormControl>
                                 <FormMessage/>
                             </FormItem>
@@ -70,7 +72,7 @@ function RegisterForm() {
                         <FormField control={form.control} render={({field}) => (
                             <FormItem>
                                 <FormControl>
-                                    <PasswordInput placeholder={"رمز عبور خود را تکرار کنید"}  {...field}/>
+                                    <PasswordInput placeholder={t("confirmPassPlaceholder")}  {...field}/>
                                 </FormControl>
                                 <FormMessage/>
                             </FormItem>

@@ -4,6 +4,8 @@ import "./globals.css";
 import React from "react";
 import {vazir} from "@/styles/fonts/fonts";
 import NextThemeProvider from "@/components/providers/next-theme-provider";
+import {NextIntlClientProvider} from "next-intl";
+import {getLocale} from "next-intl/server";
 
 
 export const metadata: Metadata = {
@@ -11,21 +13,24 @@ export const metadata: Metadata = {
     description: "Finance App For Managing Your Money",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
                                        children,
                                    }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const locale = await getLocale();
     return (
-        <html lang="fa" suppressHydrationWarning={true}>
+        <html lang={locale} suppressHydrationWarning={true}>
         <body dir="rtl"
               cz-shortcut-listen="true"
               className={`antialiased ${vazir.className}`}
         >
-        <NextThemeProvider defaultTheme={"system"} enableSystem={true} disableTransitionOnChange={true}
-                           attribute={"class"}>
-            {children}
-        </NextThemeProvider>
+        <NextIntlClientProvider>
+            <NextThemeProvider defaultTheme={"system"} enableSystem={true} disableTransitionOnChange={true}
+                               attribute={"class"}>
+                {children}
+            </NextThemeProvider>
+        </NextIntlClientProvider>
         </body>
         </html>
     );
