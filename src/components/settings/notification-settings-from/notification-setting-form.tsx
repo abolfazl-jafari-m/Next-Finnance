@@ -10,8 +10,10 @@ import {Separator} from "@/components/ui/separator";
 import {Button} from "@/components/ui/button";
 import {toast} from "sonner";
 import {Bell} from "lucide-react";
+import {useTranslations} from "next-intl";
 
 function NotificationSettingForm() {
+    const t = useTranslations("dashboard.settings.notification-tab");
     const form = useForm<z.infer<typeof notificationSchemas>>({
         resolver: zodResolver(notificationSchemas),
         defaultValues: {
@@ -35,8 +37,8 @@ function NotificationSettingForm() {
                 <FormField control={form.control} render={({field}) => (
                     <FormItem className={"flex flex-row items-center justify-between"}>
                         <div className={"space-y-2"}>
-                            <FormLabel>روشن کردن اعلان ها</FormLabel>
-                            <FormDescription>دریافت اعلان ها از اپ بر روی ویندوز</FormDescription>
+                            <FormLabel>{t("enable-notif")}</FormLabel>
+                            <FormDescription>{t("description-enable-notif")}</FormDescription>
                         </div>
                         <FormControl>
                             <Switch checked={field.value} onCheckedChange={field.onChange}/>
@@ -47,15 +49,15 @@ function NotificationSettingForm() {
                 <FormField control={form.control} render={({field}) => (
                     <FormItem className={"flex flex-row items-center justify-between"}>
                         <div className={"space-y-2"}>
-                            <FormLabel>دریافت ایمیل</FormLabel>
-                            <FormDescription>دریافت اعلان ها بر روی ایمیل خود</FormDescription>
+                            <FormLabel>{t("enable-email")}</FormLabel>
+                            <FormDescription>{t("description-enable-email")}</FormDescription>
                         </div>
                         <FormControl>
                             <Switch checked={field.value} onCheckedChange={field.onChange}/>
                         </FormControl>
                     </FormItem>
                 )} name={"email"}/>
-                <Button type={"submit"} className={"mr-auto block"}>ذخیره</Button>
+                <Button type={"submit"} className={"mr-auto block"}>{t("save")}</Button>
             </form>
         </Form>
     );

@@ -91,28 +91,59 @@
           "enjoyment": "تفریح",
           "food": "غذا",
           "others": "سایر",
-          "save" : "ذخیره"
+          "save": "ذخیره"
         }
       },
-      "editTransactions" : {
-        "title" : "ویرایش تراکنش",
-        "edit"  : "ویرایش"
+      "editTransactions": {
+        "title": "ویرایش تراکنش",
+        "edit": "ویرایش"
       },
-      "deleteTransaction" : {
-        "title" : "آیا از تصمیم خود اطمینان دارید؟",
+      "deleteTransaction": {
+        "title": "آیا از تصمیم خود اطمینان دارید؟",
         "description": "با تایید اینکار این رکورد به صورت دائمی از پنل شما حذف خواهد گردید و امکان دسترسی دوباره وجود ندارد",
-        "cancel" : "انصراف",
-        "delete" : "حذف"
+        "cancel": "انصراف",
+        "delete": "حذف"
       },
-      "searchTransactions"  : {
-        "cols" : "ستون ها",
-        "search" : "جستجو..."
+      "searchTransactions": {
+        "cols": "ستون ها",
+        "search": "جستجو..."
       },
-      "pagination"  : {
-        "sheet" : "صفحه",
-        "of" : "از",
+      "pagination": {
+        "sheet": "صفحه",
+        "of": "از",
         "row": "ردیف",
-        "selected" : "انتخاب شده"
+        "selected": "انتخاب شده"
+      }
+    },
+    "wallet": {
+      "put": "شارژ",
+      "pull": "برداشت",
+      "currency": "تومان"
+    },
+    "settings": {
+      "notification": "اعلان ها",
+      "privacy": "امنیت",
+      "profile": "پروفایل",
+      "notification-tab": {
+        "enable-notif": "فعال کردن اعلان ها",
+        "description-enable-notif": "دریافت اعلان ها بر روی ویندوز",
+        "enable-email" : "دریافت ایمیل",
+        "description-enable-email" : "دریافت اعلان ها از طریق ایمیل",
+        "save" : "ذخیره"
+      },
+      "privacy-tab": {
+        "password" : "رمز عبور جدید",
+        "confirm-pass": "تکرار رمز عبور",
+        "email" : "ایمیل",
+        "two-factor": "تایید دو مرحله ای",
+        "description-two-factor" : "با فعال کردن این مورد امینت حساب خود را بالا ببرید",
+        "save" : "ذخیره"
+      },
+      "profile-tab": {
+        "delete-avatar" : "حذف عکس",
+        "email" : "ایمیل",
+        "username" : "نام کاربری",
+        "save" : "ذخیره تغییرات"
       }
     }
   }

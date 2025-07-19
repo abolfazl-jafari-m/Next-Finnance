@@ -6,8 +6,10 @@ import NotificationSettingForm from "@/components/settings/notification-settings
 import PrivacySettingsForm from "@/components/settings/privacy-setting-form/privacy-settings-form";
 import ProfileSettingsForm from '@/components/profile/profile-settings-form/profile-settings-form';
 import {useRouter, useSearchParams} from "next/navigation";
+import {useTranslations} from "next-intl";
 
 function SettingsTabs() {
+    const t = useTranslations("dashboard.settings")
     const searchParams = useSearchParams();
     const router = useRouter();
     return (
@@ -17,9 +19,9 @@ function SettingsTabs() {
                       className={"flex-row max-sm:flex-col items-start h-full"}
                       dir={"rtl"}>
                     <TabsList className={"flex-col max-sm:flex-row h-fit items-stretch  w-44 max-sm:w-fit"}>
-                        <TabsTrigger value={"notification"}>اعلان ها</TabsTrigger>
-                        <TabsTrigger value={"privacy"}>امنیت</TabsTrigger>
-                        <TabsTrigger value={"profile"}>پروفایل</TabsTrigger>
+                        <TabsTrigger value={"notification"}>{t("notification")}</TabsTrigger>
+                        <TabsTrigger value={"privacy"}>{t("privacy")}</TabsTrigger>
+                        <TabsTrigger value={"profile"}>{t("profile")}</TabsTrigger>
                     </TabsList>
                     <TabsContent value={"notification"} className={"max-sm:w-full"}>
                         <NotificationSettingForm/>

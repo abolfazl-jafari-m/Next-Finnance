@@ -9,8 +9,10 @@ import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import AvatarUpload from "@/components/profile/avatar-upload/avatar-upload";
 import {Separator} from "@/components/ui/separator";
+import {useTranslations} from "next-intl";
 
 function ProfileSettingsForm() {
+    const t= useTranslations("dashboard.settings.profile-tab");
     const form = useForm<z.infer<typeof profileSchema>>({
         resolver: zodResolver(profileSchema),
         defaultValues: {
@@ -31,7 +33,7 @@ function ProfileSettingsForm() {
                 <div className={"space-y-2"}>
                     <FormField render={({field}) => (
                         <FormItem>
-                            <FormLabel>ایمیل</FormLabel>
+                            <FormLabel>{t("email")}</FormLabel>
                             <FormControl>
                                 <Input {...field} className={"max-w-72"}/>
                             </FormControl>
@@ -41,7 +43,7 @@ function ProfileSettingsForm() {
                     <Separator />
                     <FormField render={({field}) => (
                         <FormItem>
-                            <FormLabel>نام کاربری</FormLabel>
+                            <FormLabel>{t("username")}</FormLabel>
                             <FormControl>
                                 <Input {...field} className={"max-w-72"}/>
                             </FormControl>
@@ -49,7 +51,7 @@ function ProfileSettingsForm() {
                         </FormItem>
                     )} name={"username"} control={form.control}/>
                 </div>
-                <Button type={"submit"} className={"w-fit block mr-auto"}>ذخیره تغییرات</Button>
+                <Button type={"submit"} className={"w-fit block mr-auto"}>{t("save")}</Button>
             </form>
         </Form>
     );

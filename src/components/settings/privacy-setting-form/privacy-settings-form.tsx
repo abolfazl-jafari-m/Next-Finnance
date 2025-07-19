@@ -9,8 +9,10 @@ import {Input} from "@/components/ui/input";
 import {Separator} from "@/components/ui/separator";
 import {Switch} from "@/components/ui/switch";
 import {Button} from "@/components/ui/button";
+import {useTranslations} from "next-intl";
 
 function PrivacySettingsForm() {
+    const t= useTranslations("dashboard.settings.privacy-tab");
     const form = useForm<z.infer<typeof privacySchemas>>({
         resolver: zodResolver(privacySchemas),
         defaultValues: {
@@ -28,7 +30,7 @@ function PrivacySettingsForm() {
             <form className={"space-y-5 p-5"} onSubmit={form.handleSubmit(handlePrivacySettings)}>
                 <FormField render={({field}) => (
                     <FormItem>
-                        <FormLabel>رمز عبور جدید</FormLabel>
+                        <FormLabel>{t("password")}</FormLabel>
                         <FormControl>
                             <Input {...field} className={"max-w-72"}/>
                         </FormControl>
@@ -38,7 +40,7 @@ function PrivacySettingsForm() {
                 <Separator/>
                 <FormField render={({field}) => (
                     <FormItem>
-                        <FormLabel>تکرار رمز عبور جدید</FormLabel>
+                        <FormLabel>{t("confirm-pass")}</FormLabel>
                         <FormControl>
                             <Input {...field} className={"max-w-72"}/>
                         </FormControl>
@@ -48,7 +50,7 @@ function PrivacySettingsForm() {
                 <Separator/>
                 <FormField render={({field}) => (
                     <FormItem>
-                        <FormLabel>ایمیل</FormLabel>
+                        <FormLabel>{t("email")}</FormLabel>
                         <FormControl>
                             <Input {...field} className={"max-w-72"}/>
                         </FormControl>
@@ -59,15 +61,15 @@ function PrivacySettingsForm() {
                 <FormField render={({field}) => (
                     <FormItem className={"flex items-center justify-between"}>
                         <div className={"space-y-2"}>
-                            <FormLabel>تایید دومرحله ای</FormLabel>
-                            <FormDescription>با فعال کردن تایید دو مرحله ای حساب خود امن تر کنید</FormDescription>
+                            <FormLabel>{t("two-factor")}</FormLabel>
+                            <FormDescription>{t("description-two-factor")}</FormDescription>
                         </div>
                         <FormControl>
                             <Switch checked={field.value} onCheckedChange={field.onChange}/>
                         </FormControl>
                     </FormItem>
                 )} name={"twoFactorPassword"} control={form.control}/>
-                <Button type={"submit"} className={"mr-auto block"}>ذخیره</Button>
+                <Button type={"submit"} className={"mr-auto block"}>{t("save")}</Button>
             </form>
         </Form>
     );
