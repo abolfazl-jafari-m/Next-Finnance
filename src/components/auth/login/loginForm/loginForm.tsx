@@ -13,9 +13,11 @@ import {FiGithub} from "react-icons/fi";
 import Link from "next/link";
 import {PasswordInput} from "@/components/ui/password-input";
 import {useTranslations} from "next-intl";
+import {useRouter} from "next/navigation";
 
 function LoginForm() {
     const t = useTranslations("login");
+    const router = useRouter();
     const form = useForm<z.infer<typeof loginSchemas>>({
         resolver: zodResolver(loginSchemas),
         defaultValues: {
@@ -25,6 +27,7 @@ function LoginForm() {
     })
     const handleLogin = (data: z.infer<typeof loginSchemas>) => {
         console.log(data);
+        router.push("/dashboard");
     }
     return (
         <Card className={"w-1/4 max-xl:w-1/3 max-lg:w-2/5 max-md:w-1/2 max-sm:w-3/4 pb-2 gap-5"}>

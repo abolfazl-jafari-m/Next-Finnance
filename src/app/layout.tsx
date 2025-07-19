@@ -1,6 +1,5 @@
 import type {Metadata} from "next";
 import "./globals.css";
-// import {poppins} from "@/styles/fonts/fonts";
 import React from "react";
 import {vazir} from "@/styles/fonts/fonts";
 import NextThemeProvider from "@/components/providers/next-theme-provider";
