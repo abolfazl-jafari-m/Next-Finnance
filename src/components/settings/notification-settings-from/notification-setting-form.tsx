@@ -8,8 +8,6 @@ import {notificationSchemas} from "@/schemas/settings";
 import {z} from "zod";
 import {Separator} from "@/components/ui/separator";
 import {Button} from "@/components/ui/button";
-import {toast} from "sonner";
-import {Bell} from "lucide-react";
 import {useTranslations} from "next-intl";
 
 function NotificationSettingForm() {
@@ -23,13 +21,7 @@ function NotificationSettingForm() {
     })
 
     const handleNotificationSubmit = (data : z.infer<typeof notificationSchemas>) => {
-            toast.success("well Done", {
-                position: "top-left",
-                description : "Notification Settings",
-               richColors : true,
-                icon : <Bell size={16}/>
-            })
-        toast(JSON.stringify(data, null, 2));
+            console.log(data);
     }
     return (
         <Form {...form}>

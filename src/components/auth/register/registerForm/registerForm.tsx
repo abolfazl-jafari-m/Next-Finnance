@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, {useState} from 'react';
 import {Form, FormControl, FormField, FormItem, FormMessage} from "@/components/ui/form";
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {useForm} from "react-hook-form";
@@ -13,21 +13,39 @@ import {FiGithub} from "react-icons/fi";
 import Link from "next/link";
 import {PasswordInput} from "@/components/ui/password-input";
 import {useTranslations} from "next-intl";
+import {register} from "@/services/auth";
+import {toast} from "sonner";
+import {useRouter} from "next/navigation";
 
 function RegisterForm() {
     const t = useTranslations("register");
+    const [loading, setLoading] = useState(false);
+    const router = useRouter()
     const form = useForm<z.infer<typeof registerSchemas>>({
         resolver: zodResolver(registerSchemas),
         defaultValues: {
             email: "",
             password: "",
-            phone: "",
+            phoneNumber: "",
             rePassword: "",
             username: ""
         }
     })
     const handleRegister = (data: z.infer<typeof registerSchemas>) => {
-        console.log(data);
+        setLoading(true);
+        register(data)
+            .then(() => {
+                toast.success("ثبت نام با موفقیت انجام شد");
+                setTimeout(() => {
+                    router.push("/login")
+                }, 1000)
+            })
+            .catch(() => {
+                toast.error("خطایی رخ داده دوباره امتحان کنید")
+            })
+            .finally(() => {
+                setLoading(false);
+            })
     }
     return (
         <Card className={"w-1/4 max-xl:w-1/3 max-lg:w-2/5 max-md:w-1/2 max-sm:w-3/4 pb-2 gap-5"}>
@@ -60,7 +78,7 @@ function RegisterForm() {
                                 </FormControl>
                                 <FormMessage/>
                             </FormItem>
-                        )} name={"phone"}/>
+                        )} name={"phoneNumber"}/>
                         <FormField control={form.control} render={({field}) => (
                             <FormItem>
                                 <FormControl>
@@ -77,7 +95,7 @@ function RegisterForm() {
                                 <FormMessage/>
                             </FormItem>
                         )} name={"rePassword"}/>
-                        <Button className={"w-full"} type={"submit"}> ثبت نام</Button>
+                        <Button className={"w-full"} type={"submit"}>{t("register")}</Button>
                     </form>
                 </Form>
             </CardContent>
@@ -86,8 +104,8 @@ function RegisterForm() {
                     <Button variant={"outline"} className={"flex-1/2"}><FcGoogle/></Button>
                     <Button variant={"outline"} className={"flex-1/2"}><FiGithub/></Button>
                 </div>
-                <Button variant={"link"} className={"p-1"}>
-                    <Link href={"/login"}>قبلا ثبت نام کردید؟</Link>
+                <Button variant={"link"} className={"p-1"} disabled={loading}>
+                    <Link href={"/login"}>{t("alreadyHavingAccount")}</Link>
                 </Button>
             </CardFooter>
         </Card>

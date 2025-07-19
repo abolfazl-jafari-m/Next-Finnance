@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import {
     DropdownMenu,
@@ -12,9 +13,13 @@ import {EllipsisVertical} from "lucide-react";
 import Link from "next/link";
 import {BiExit} from "react-icons/bi";
 import {useTranslations} from "next-intl";
+import {deleteCookie} from "cookies-next/client";
+import {useRouter} from "next/navigation";
+import {toast} from "sonner";
 
 function UserActions() {
-    const t = useTranslations("dashboard.sidebar.user-actions")
+    const t = useTranslations("dashboard.sidebar.user-actions");
+    const router = useRouter();
     return (
         <DropdownMenu dir={"rtl"}>
             <DropdownMenuTrigger>
@@ -35,10 +40,15 @@ function UserActions() {
             </DropdownMenuTrigger>
             <DropdownMenuContent side={"left"} align={"end"}>
                 <DropdownMenuLabel>{t("myAccount")}</DropdownMenuLabel>
-                <DropdownMenuItem asChild={true}><Link href={"/dashboard/settings?tab=profile"}>{t("profile")}</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild={true}><Link
+                    href={"/dashboard/settings?tab=profile"}>{t("profile")}</Link></DropdownMenuItem>
                 <DropdownMenuItem>{t("notifications")}</DropdownMenuItem>
                 <DropdownMenuSeparator/>
-                <DropdownMenuItem variant={"destructive"}>
+                <DropdownMenuItem variant={"destructive"} onClick={() => {
+                    toast.success("خروج موفقیت آمیز");
+                    deleteCookie("access-token");
+                    router.push("/login");
+                }}>
                     {t("logOut")}
                     <DropdownMenuShortcut className={"ml-0 mr-auto"}><BiExit/></DropdownMenuShortcut>
                 </DropdownMenuItem>

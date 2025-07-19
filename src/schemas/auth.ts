@@ -16,7 +16,7 @@ export const registerSchemas = z.object({
         .refine((value) => /[A-Z]/.test(value), "حداقل یک حرف بزرگ وارد کنید")
         .refine((value) => /[^A-Za-z0-9]/.test(value), "حداقل یک کاراکتر خاص وارد کنید")
     ,
-    phone: z.string().nonempty("وارد کردن تلفن همراه الزامیست").regex(/^(\+98|0)?9\d{9}$/, "فرمت واردشده صحیح نمیباشد")
+    phoneNumber: z.string().nonempty("وارد کردن تلفن همراه الزامیست").regex(/^(\+98|0)?9\d{9}$/, "فرمت واردشده صحیح نمیباشد")
 }).superRefine(((data, ctx) => {
     if (data.password !== data.rePassword) {
         ctx.addIssue({

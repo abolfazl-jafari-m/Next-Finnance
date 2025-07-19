@@ -14,10 +14,15 @@ import Link from "next/link";
 import {PasswordInput} from "@/components/ui/password-input";
 import {useTranslations} from "next-intl";
 import {useRouter} from "next/navigation";
+import {login} from "@/services/auth";
+import {toast} from "sonner";
+import {setCookie} from "cookies-next/client";
+
 
 function LoginForm() {
     const t = useTranslations("login");
     const router = useRouter();
+    const [loading, setLoading] = React.useState(false);
     const form = useForm<z.infer<typeof loginSchemas>>({
         resolver: zodResolver(loginSchemas),
         defaultValues: {
@@ -26,8 +31,23 @@ function LoginForm() {
         }
     })
     const handleLogin = (data: z.infer<typeof loginSchemas>) => {
-        console.log(data);
-        router.push("/dashboard");
+        setLoading(true);
+        login(data)
+            .then((res) => {
+                toast.success("ورود موفقیت آمیز بود")
+                setCookie("access-token", res.accessToken);
+                router.push("/dashboard");
+            })
+            .catch((err) => {
+                if (err.status === 401) {
+                    toast.error("نام کاربری یا رمز عبور صحیح نمیباشد")
+                } else {
+                    toast.error("خطایی رخ داد.لطفن دوباره امتحان کنید")
+                }
+            })
+            .finally(() => {
+                setLoading(false);
+            })
     }
     return (
         <Card className={"w-1/4 max-xl:w-1/3 max-lg:w-2/5 max-md:w-1/2 max-sm:w-3/4 pb-2 gap-5"}>
@@ -52,7 +72,7 @@ function LoginForm() {
                             <FormMessage/>
                         </FormItem>
                     )} name={"password"}/>
-                        <Button className={"w-full"} type={"submit"}>{t("login")}</Button>
+                        <Button className={"w-full"} type={"submit"} disabled={loading}>{t("login")}</Button>
                     </form>
                 </Form>
             </CardContent>

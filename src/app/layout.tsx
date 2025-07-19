@@ -5,6 +5,9 @@ import {vazir} from "@/styles/fonts/fonts";
 import NextThemeProvider from "@/components/providers/next-theme-provider";
 import {NextIntlClientProvider} from "next-intl";
 import {getLocale} from "next-intl/server";
+import {Toaster} from "@/components/ui/sonner";
+
+
 
 
 export const metadata: Metadata = {
@@ -25,9 +28,10 @@ export default async function RootLayout({
               className={`antialiased ${vazir.className}`}
         >
         <NextIntlClientProvider>
-            <NextThemeProvider defaultTheme={"system"} enableSystem={true} disableTransitionOnChange={true}
+            <NextThemeProvider defaultTheme={"dark"} 
                                attribute={"class"}>
                 {children}
+                <Toaster richColors={true} position={"top-left"} expand={true} dir={"rtl"} />
             </NextThemeProvider>
         </NextIntlClientProvider>
         </body>
