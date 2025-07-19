@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import SettingsTabs from "@/components/settings/settings-tabs/settings-tabs";
 import {Metadata} from "next";
 
@@ -10,7 +10,9 @@ function Page() {
     return (
         <div className={"p-5 space-y-5"}>
             <h2 className={"text-2xl font-semibold"}>تنظیمات</h2>
-            <SettingsTabs/>
+            <Suspense>
+                <SettingsTabs/>
+            </Suspense>
         </div>
     );
 }
