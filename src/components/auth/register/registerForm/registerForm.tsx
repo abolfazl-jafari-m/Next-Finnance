@@ -40,8 +40,13 @@ function RegisterForm() {
                     router.push("/login")
                 }, 1000)
             })
-            .catch(() => {
-                toast.error("خطایی رخ داده دوباره امتحان کنید")
+            .catch((err) => {
+                if (err.status === 400) {
+                    toast.error("ایمیل قبلا استفاده شده")
+                }
+                else {
+                    toast.error("خطایی رخ داده دوباره امتحان کنید")
+                }
             })
             .finally(() => {
                 setLoading(false);
