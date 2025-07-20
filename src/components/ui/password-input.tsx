@@ -8,17 +8,18 @@ function PasswordInput({className, ...props}: React.ComponentProps<"input">) {
     const [showPass, setShowPass] = useState<boolean>(false);
     return (
         <div
-            className={"flex  bg-transparent dark:bg-input/30 items-center gap-x-2 h-9 has-focus-visible:border-ring has-focus-visible:ring-ring/50 has-focus-visible:ring-[1px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive rounded-md border px-3 py-1 "}>
+            aria-invalid={props["aria-invalid"]}
+            className={"flex  bg-transparent dark:bg-input/30 items-center gap-x-2 h-9 has-focus-visible:border-ring has-focus-visible:ring-ring/50 has-focus-visible:ring-[1px]  aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive rounded-md border px-3 py-1 "}>
             <input
-                type={showPass ? "text" :"password"}
+                type={showPass ? "text" : "password"}
                 data-slot="input"
                 className={cn(
-                    "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground  border-input flex w-full min-w-0 bg-transparent text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+                    "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground   flex w-full min-w-0 bg-transparent text-base transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
                     className
                 )}
                 {...props}
             />
-            <div onClick={()=>setShowPass(!showPass)} >
+            <div onClick={() => setShowPass(!showPass)} className={cn(props["aria-invalid"] && "text-destructive")}>
                 {
                     showPass ?
                         <EyeOffIcon size={16}/>
