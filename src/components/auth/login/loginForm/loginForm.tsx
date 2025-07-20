@@ -49,6 +49,11 @@ function LoginForm() {
                 setLoading(false);
             })
     }
+    const handleGuess = () => {
+        const accessToken = `guess-${Date.now()}`;
+        setCookie("access-token", accessToken);
+        router.push("/dashboard");
+    }
     return (
         <Card className={"w-1/4 max-xl:w-1/3 max-lg:w-2/5 max-md:w-1/2 max-sm:w-3/4 pb-2 gap-5"}>
             <CardHeader>
@@ -67,12 +72,14 @@ function LoginForm() {
                         )} name={"email"}/> <FormField control={form.control} render={({field}) => (
                         <FormItem>
                             <FormControl>
-                                <PasswordInput placeholder={t("passwordPlaceholder")}  {...field}/>
+                                <PasswordInput placeholder={t("passwordPlaceholder")}  {...field} />
                             </FormControl>
                             <FormMessage/>
                         </FormItem>
                     )} name={"password"}/>
                         <Button className={"w-full"} type={"submit"} disabled={loading}>{t("login")}</Button>
+                        <Button className={"w-full"} type={"button"} disabled={loading} variant={"outline"}
+                                onClick={handleGuess}>ورود به عنوان مهمان</Button>
                     </form>
                 </Form>
             </CardContent>
