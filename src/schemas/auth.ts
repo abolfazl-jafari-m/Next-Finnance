@@ -26,3 +26,8 @@ export const registerSchemas = z.object({
         })
     }
 }))
+
+export const otpSchema = z.object({
+    otp: z.string().min(6, "لطفا رمز عبور شش رقمی ارسال شده را وارد کنید")
+
+})
