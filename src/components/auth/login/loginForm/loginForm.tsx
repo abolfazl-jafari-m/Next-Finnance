@@ -50,7 +50,7 @@ function LoginForm() {
             })
     }
     const handleGuess = () => {
-        const accessToken = `guess-${Date.now()}`;
+        const accessToken = `guest-${Date.now()}`;
         setCookie("access-token", accessToken);
         router.push("/dashboard");
     }

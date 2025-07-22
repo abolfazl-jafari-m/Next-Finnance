@@ -8,7 +8,7 @@ export interface Transaction  {
     category: string;
     date: string;
     note?: string;
-    balanceAfter?: number;
+    createdAt: string;
 }
 
 export const transactions: Transaction[] = [
@@ -18,9 +18,8 @@ export const transactions: Transaction[] = [
         title: "اجاره خانه",
         amount: "6000000",
         category: "rent",
-        date: "2025-07-02T12:00:00.000Z",
+        createdAt: "2025-07-02T12:00:00.000Z",
         note: "اجاره تیرماه",
-        balanceAfter: 9000000,
     },
     {
         id: "trx-001",
@@ -28,9 +27,8 @@ export const transactions: Transaction[] = [
         title: "حقوق تیر",
         amount: "15000000",
         category: "salary",
-        date: "2025-07-01T09:00:00.000Z",
+        createdAt: "2025-07-01T09:00:00.000Z",
         note: "واریز ماهانه شرکت",
-        balanceAfter: 15000000,
     },
     {
         id: "trx-003",
@@ -38,7 +36,6 @@ export const transactions: Transaction[] = [
         title: "خرید اینترنت",
         amount: "250000",
         category: "utilities",
-        date: "2025-07-03T08:30:00.000Z",
-        balanceAfter: 8750000,
+        createdAt: "2025-07-03T08:30:00.000Z",
     },
 ];

@@ -6,6 +6,7 @@ export type Bill = {
     paid: boolean;
     trackingCode?: string;
     description?: string;
+    createdAt: string;
 }
 
 export const bills: Bill[] = [
