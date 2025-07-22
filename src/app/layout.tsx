@@ -6,8 +6,8 @@ import NextThemeProvider from "@/components/providers/next-theme-provider";
 import {NextIntlClientProvider} from "next-intl";
 import {getLocale} from "next-intl/server";
 import {Toaster} from "@/components/ui/sonner";
-
-
+import ReactQueryClientProvider from "@/lib/providers/ReactQueryClientProvider";
+import {AccountInfoProvider} from "@/lib/providers/AccountInfoProvider";
 
 
 export const metadata: Metadata = {
@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({
-                                       children,
-                                   }: Readonly<{
+                                             children,
+                                         }: Readonly<{
     children: React.ReactNode;
 }>) {
     const locale = await getLocale();
@@ -28,11 +28,15 @@ export default async function RootLayout({
               className={`antialiased ${vazir.className}`}
         >
         <NextIntlClientProvider>
-            <NextThemeProvider defaultTheme={"dark"} 
-                               attribute={"class"}>
-                {children}
-                <Toaster richColors={true} position={"top-left"} expand={true} dir={"rtl"} />
-            </NextThemeProvider>
+            <ReactQueryClientProvider>
+                <AccountInfoProvider>
+                    <NextThemeProvider defaultTheme={"dark"}
+                                       attribute={"class"}>
+                        {children}
+                        <Toaster richColors={true} position={"top-left"} expand={true} dir={"rtl"}/>
+                    </NextThemeProvider>
+                </AccountInfoProvider>
+            </ReactQueryClientProvider>
         </NextIntlClientProvider>
         </body>
         </html>

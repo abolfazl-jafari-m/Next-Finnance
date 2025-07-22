@@ -3,6 +3,14 @@ export interface UserInterface {
     password: string;
     username: string;
     phoneNumber: string;
-    avatar ?: string;
+    avatar?: string;
     created_at: string;
+}
+
+export interface UserAccountInterface {
+    id: string;
+    created_at: string;
+    accountNumber: string;
+    cvv: string;
+    expireDate: string;
 }

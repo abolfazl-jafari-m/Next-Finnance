@@ -16,23 +16,25 @@ import {useTranslations} from "next-intl";
 import {deleteCookie} from "cookies-next/client";
 import {useRouter} from "next/navigation";
 import {toast} from "sonner";
+import {useAccountInfoStore} from "@/lib/providers/AccountInfoProvider";
 
 function UserActions() {
     const t = useTranslations("dashboard.sidebar.user-actions");
     const router = useRouter();
+    const user = useAccountInfoStore(state => state.user);
     return (
         <DropdownMenu dir={"rtl"}>
             <DropdownMenuTrigger>
                 <Card
                     className={"rounded-sm  px-2 py-1.5 w-full flex items-center flex-row cursor-pointer justify-between "}>
-                    <div className={"flex items-center gap-1"}>
+                    <div className={"flex items-center gap-1 justify-between flex-1"}>
                         <Avatar>
-                            <AvatarImage src={"https://github.com/shadcn.png"}/>
-                            <AvatarFallback>NV</AvatarFallback>
+                            <AvatarImage src={user?.avatar ? user.avatar : "https://github.com/shadcn.png"}/>
+                            <AvatarFallback>{user ? user.username.slice(0, 2) : "NV"}</AvatarFallback>
                         </Avatar>
                         <div className={"flex flex-col"}>
-                            <h3 className={"font-semibold text-sm"}>Abolfazl</h3>
-                            <p className={"text-xs"}>abolfazljafari563@gmail.com</p>
+                            <h3 className={"font-semibold text-sm"}>{user ? user.username : "Guest"}</h3>
+                            <p className={"text-xs"}>{user && user.email}</p>
                         </div>
                     </div>
                     <EllipsisVertical size={14}/>

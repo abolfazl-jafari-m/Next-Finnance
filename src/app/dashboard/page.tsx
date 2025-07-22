@@ -6,7 +6,11 @@ import RecentTransactions from "@/components/dash/recent-tranractions/recent-tra
 import UpcomingBills from "@/components/dash/upcoming-bils/upcoming-bills";
 import Calender from "@/components/dash/calender/calender";
 import BankingCard from "@/components/dash/banking-card/banking-card";
+import {Metadata} from "next";
 
+export const metadata : Metadata = {
+    title : "داشبورد"
+}
 
 function DashboardPage() {
     return (
