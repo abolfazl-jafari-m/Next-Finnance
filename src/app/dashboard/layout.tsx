@@ -7,14 +7,13 @@ import {useQuery} from "@tanstack/react-query";
 import {getAccountInfo, getUser} from "@/services/user";
 import {getCookie} from "cookies-next/client";
 import {useAccountInfoStore} from "@/lib/providers/AccountInfoProvider";
-// import Loading from "@/components/dash/loading/loading";
-
+import Loading from "@/components/dash/loading/loading";
 
 function Layout({children}: { children: ReactNode }) {
     const accessToken = getCookie("access-token");
     const setUserInfo = useAccountInfoStore(state => state.setUserInfo);
     const setAccount = useAccountInfoStore(state => state.setAccount);
-    const {data} = useQuery({
+    const {data, isLoading} = useQuery({
         queryKey: ['accountInfos'],
         queryFn: async () => {
             const [userData, accountInfo] = await Promise.all([
@@ -32,13 +31,17 @@ function Layout({children}: { children: ReactNode }) {
         }
     }, [data]);
 
+    if (isLoading) {
+        return <Loading/>;
+    }
+
     return (
         <div>
             <SidebarProvider>
                 <AppSidebar/>
                 <SidebarInset>
-                    <AppHeader/>
-                    {children}
+                        <AppHeader/>
+                        {children}
                 </SidebarInset>
             </SidebarProvider>
         </div>

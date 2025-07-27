@@ -5,7 +5,7 @@ import {Button} from "@/components/ui/button";
 
 function TransactionsList({transactions}: { transactions: Transaction[] }) {
     return (
-        transactions.length > 0 ?
+        transactions?.length > 0 ?
             <div className={"flex flex-col gap-y-2"}>
                 {transactions.map(transactions => <TransactionListItem key={transactions.id} transaction={transactions}/>)}
             </div>

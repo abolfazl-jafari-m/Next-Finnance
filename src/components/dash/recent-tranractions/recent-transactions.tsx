@@ -15,7 +15,6 @@ import {transactions} from "@/interfaces/transactions";
 function RecentTransactions({className, ...props}: React.ComponentProps<"div">) {
     const accessToken = getCookie("access-token");
     const guestMode = !!accessToken && accessToken.startsWith("guest");
-    console.log(guestMode);
     const t = useTranslations("dashboard.mainPage.lastTransactions")
     const {isLoading, data} = useQuery(({
         queryFn: getTransactions,
