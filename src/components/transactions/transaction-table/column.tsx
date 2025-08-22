@@ -68,7 +68,7 @@ export const columns: ColumnDef<Transaction>[] = [
         enableHiding: false
     },
     {
-        accessorKey: "date",
+        accessorKey: "createdAt",
         header: ({column}) => (
             <div className={"hover:bg-primary flex items-center gap-x-1 justify-center h-full cursor-pointer"}
                  onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
@@ -78,7 +78,7 @@ export const columns: ColumnDef<Transaction>[] = [
         ),
         cell: ({row}) => (
             <div>
-                {new Date(row.getValue("date")).toLocaleDateString("fa", {
+                {new Date(row.getValue("createdAt")).toLocaleDateString("fa", {
                     year: "2-digit",
                     month: "long",
                     day: "numeric",

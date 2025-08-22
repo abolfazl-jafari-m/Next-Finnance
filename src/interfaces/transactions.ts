@@ -6,7 +6,6 @@ export interface Transaction  {
     title: string;
     amount: string;
     category: string;
-    date: string;
     note?: string;
     createdAt: string;
 }

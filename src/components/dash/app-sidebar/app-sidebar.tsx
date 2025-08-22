@@ -19,6 +19,7 @@ import {
 import AppSidebarButton from "@/components/dash/app-sidebar/app-sidebar-button";
 import UserActions from "@/components/dash/user-actions/user-actions";
 import {useTranslations} from "next-intl";
+import {BsCurrencyBitcoin} from "react-icons/bs";
 
 
 function AppSidebar() {
@@ -56,6 +57,12 @@ function AppSidebar() {
                                 <AppSidebarButton href={"/dashboard/wallet"}>
                                     <Wallet/>
                                     <span>{t("wallet")}</span>
+                                </AppSidebarButton>
+                            </SidebarMenuItem>
+                            <SidebarMenuItem>
+                                <AppSidebarButton href={"/dashboard/prices"}>
+                                    <BsCurrencyBitcoin/>
+                                    <span>{t("prices")}</span>
                                 </AppSidebarButton>
                             </SidebarMenuItem>
                             <SidebarMenuItem>

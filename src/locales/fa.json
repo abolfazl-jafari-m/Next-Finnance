@@ -34,7 +34,8 @@
         "profile": "پروفایل",
         "logOut": "خروج",
         "notifications": "اعلان ها"
-      }
+      },
+      "prices": "قیمت لحظه ای ارزها"
     },
     "mainPage": {
       "totalBalance": {
@@ -127,23 +128,23 @@
       "notification-tab": {
         "enable-notif": "فعال کردن اعلان ها",
         "description-enable-notif": "دریافت اعلان ها بر روی ویندوز",
-        "enable-email" : "دریافت ایمیل",
-        "description-enable-email" : "دریافت اعلان ها از طریق ایمیل",
-        "save" : "ذخیره"
+        "enable-email": "دریافت ایمیل",
+        "description-enable-email": "دریافت اعلان ها از طریق ایمیل",
+        "save": "ذخیره"
       },
       "privacy-tab": {
-        "password" : "رمز عبور جدید",
+        "password": "رمز عبور جدید",
         "confirm-pass": "تکرار رمز عبور",
-        "email" : "ایمیل",
+        "email": "ایمیل",
         "two-factor": "تایید دو مرحله ای",
-        "description-two-factor" : "با فعال کردن این مورد امینت حساب خود را بالا ببرید",
-        "save" : "ذخیره"
+        "description-two-factor": "با فعال کردن این مورد امینت حساب خود را بالا ببرید",
+        "save": "ذخیره"
       },
       "profile-tab": {
-        "delete-avatar" : "حذف عکس",
-        "email" : "ایمیل",
-        "username" : "نام کاربری",
-        "save" : "ذخیره تغییرات"
+        "delete-avatar": "حذف عکس",
+        "email": "ایمیل",
+        "username": "نام کاربری",
+        "save": "ذخیره تغییرات"
       }
     }
   }
