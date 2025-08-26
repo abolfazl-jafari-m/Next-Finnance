@@ -1,9 +1,12 @@
 import {createStore} from "zustand/vanilla";
 import {UserAccountInterface, UserInterface} from "@/interfaces/user";
 
+
+
 export type AccountInfoState = {
     user: Omit<UserInterface, "password"> | undefined,
-    accounts: UserAccountInterface []
+    accounts: UserAccountInterface [],
+
 }
 
 
@@ -16,7 +19,7 @@ export type AccountInfoStore = AccountInfoActions & AccountInfoState;
 
 const initialState: AccountInfoState = {
     user: undefined,
-    accounts: []
+    accounts: [],
 }
 
 export const createAccountInfoStore = (init: AccountInfoState = initialState,) => {

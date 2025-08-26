@@ -56,7 +56,7 @@
       },
       "charts": {
         "compilation": {
-          "title": "گرازش مالی",
+          "title": "گزارش مالی",
           "filter": "فیلتر",
           "last-three-month": "سه ماه اخیر",
           "last-six-month": "شش ماه اخیر",

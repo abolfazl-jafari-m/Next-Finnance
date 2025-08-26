@@ -8,13 +8,12 @@ import {useTranslations} from "next-intl";
 import {useQuery} from "@tanstack/react-query";
 import {getTransactions} from "@/services/transaction";
 import SkeletonList from "@/components/base/skeleton-list/skeleton-list";
-import {getCookie} from "cookies-next/client";
 import TransactionsList from "@/components/transactions/transactions-list/transactions-list";
 import {transactions} from "@/interfaces/transactions";
+import {useIsGuestMode} from "@/hooks/use-is-guest-mode";
 
 function RecentTransactions({className, ...props}: React.ComponentProps<"div">) {
-    const accessToken = getCookie("access-token");
-    const guestMode = !!accessToken && accessToken.startsWith("guest");
+    const {guestMode} = useIsGuestMode();
     const t = useTranslations("dashboard.mainPage.lastTransactions")
     const {isLoading, data} = useQuery(({
         queryFn: getTransactions,
