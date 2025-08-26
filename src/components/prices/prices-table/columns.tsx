@@ -1,7 +1,7 @@
 import {ColumnDef} from "@tanstack/table-core";
 import {Coins} from "@/interfaces/prices";
 import {Checkbox} from "@/components/ui/checkbox";
-import {ArrowDown, ArrowUp} from "lucide-react";
+import {ArrowDown, ArrowUp, ArrowUpDown} from "lucide-react";
 
 
 export const columns: ColumnDef<Coins>[] = [
@@ -19,6 +19,8 @@ export const columns: ColumnDef<Coins>[] = [
             <Checkbox checked={row.getIsSelected()}
                       onCheckedChange={(value) => row.toggleSelected(!!value)}
                       aria-label={"Select row"}/>
+        ,enableSorting : false,
+        enableHiding : false
     },
     {
         accessorKey: "name",
@@ -40,7 +42,12 @@ export const columns: ColumnDef<Coins>[] = [
     {
         accessorKey: "priceUsd",
         header:
-            "قیمت",
+            ({column}) => (
+                <div className={"flex items-center justify-center gap-3 cursor-pointer hover:bg-emerald-700 h-full"} onClick={()=>column.toggleSorting(column.getIsSorted() ==="asc")}>
+                    <span>قیمت</span>
+                    <ArrowUpDown size={12}/>
+                </div>
+            ),
         cell:
             ({row}) => {
                 const price = row.getValue("priceUsd")

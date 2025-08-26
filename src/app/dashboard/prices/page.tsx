@@ -5,6 +5,7 @@ import {columns} from "@/components/prices/prices-table/columns";
 import {useQuery, useQueryClient} from "@tanstack/react-query";
 import {getCoins} from "@/services/prices";
 import {Prices} from "@/interfaces/prices";
+import {GridLoader} from "react-spinners";
 
 function PricesPage() {
     const queryClient = useQueryClient();
@@ -38,11 +39,15 @@ function PricesPage() {
 
         return () => ws.close();
     }, []);
+
+
     return (
         <div>
             {
                 isLoading ?
-                    <p>isLoading</p>
+                    <div className={"w-full h-[calc(100vh-200px)] flex items-center justify-center"}>
+                        <GridLoader color={"darkgreen"}/>
+                    </div>
                     :
                     <PricesTable columns={columns} data={coins.data}/>
             }

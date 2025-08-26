@@ -10,14 +10,14 @@ import {
 import {Button} from "@/components/ui/button";
 import {useTranslations} from "next-intl";
 
-function TableFiltering<TData>({table}: { table: Table<TData> }) {
-    const t = useTranslations("dashboard.transactions.searchTransactions")
+function TableFiltering<TData>({table, filterBy = "title"}: { table: Table<TData> , filterBy ?:string}) {
+    const t = useTranslations("dashboard.transactions.searchTransactions");
     return (
         <div className={"flex items-center gap-x-5 my-5"}>
             <Input placeholder={t("search")}
-                   value={(table.getColumn("title")?.getFilterValue() as string)}
+                   value={(table.getColumn(filterBy)?.getFilterValue() as string)}
                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                       table.getColumn("title")?.setFilterValue(e.target.value)
+                       table.getColumn(filterBy)?.setFilterValue(e.target.value)
                    }}
                    className={"max-w-54"}
             />
