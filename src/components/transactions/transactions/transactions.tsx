@@ -15,7 +15,7 @@ function Transactions() {
         queryFn: getTransactions,
         enabled: !guestMode
     });
-    if (isLoading &&!guestMode) {
+    if (isLoading && !guestMode) {
         return <SkeletonTable/>;
     }
     return (

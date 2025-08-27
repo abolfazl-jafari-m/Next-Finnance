@@ -1,3 +1,4 @@
+"use client";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -10,10 +11,11 @@ import DeleteTransactionModal from "@/components/transactions/delete-transaction
 import EditTransactionModal from "@/components/transactions/edit-transaction-modal/edit-transaction-modal";
 import React from 'react';
 import {MoreHorizontal} from "lucide-react";
+import {Transaction} from "@/interfaces/transactions";
 
-function TransactionActions({id} : {id: string}) {
+function TransactionActions({transaction} : {transaction : Transaction}) {
     return (
-        <DropdownMenu>
+        <DropdownMenu >
             <DropdownMenuTrigger asChild={true}>
                 <Button variant={"ghost"} size={"sm"} className={"border-none"}>
                     <MoreHorizontal/>
@@ -22,10 +24,10 @@ function TransactionActions({id} : {id: string}) {
             <DropdownMenuContent align={"start"} className={"text-center"} side={"right"}>
                 <DropdownMenuLabel>عملیات</DropdownMenuLabel>
                 <DropdownMenuItem className={"justify-center"} asChild>
-                    <EditTransactionModal id={id} />
+                    <EditTransactionModal transaction={transaction}/>
                 </DropdownMenuItem>
                 <DropdownMenuItem variant={"destructive"} className={"justify-center"} asChild>
-                    <DeleteTransactionModal id={id}/>
+                    <DeleteTransactionModal transaction={transaction}/>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Metadata} from "next";
 import Transactions from "@/components/transactions/transactions/transactions";
+import {TransactionProvider} from "@/lib/providers/TransactionProvider";
 
 
 export const metadata: Metadata = {
@@ -10,7 +11,9 @@ export const metadata: Metadata = {
 function TransactionsPage() {
     return (
         <main>
-            <Transactions />
+            <TransactionProvider>
+                <Transactions/>
+            </TransactionProvider>
         </main>
     );
 }

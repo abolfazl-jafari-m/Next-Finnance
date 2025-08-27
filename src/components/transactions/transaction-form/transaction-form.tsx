@@ -11,24 +11,61 @@ import {Button} from "@/components/ui/button";
 import {Textarea} from "@/components/ui/textarea";
 import {Transaction} from "@/interfaces/transactions";
 import {useTranslations} from "next-intl";
+import {addTransaction, updateTransaction} from "@/services/transaction";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {toast} from "sonner";
 
 
-function TransactionForm({transaction, setOpen} : {transaction ?: Transaction, setOpen  : Dispatch<React.SetStateAction<boolean>>}) {
-    const t= useTranslations("dashboard.transactions.addTransaction.transaction-form");
+function TransactionForm({transaction, setOpen}: {
+    transaction?: Transaction,
+    setOpen: Dispatch<React.SetStateAction<boolean>>
+}) {
+    const t = useTranslations("dashboard.transactions.addTransaction.transaction-form");
+
+
+    const queryClient = useQueryClient();
+    const {mutate: createTransaction, isPending} = useMutation({
+        mutationKey: ["addTransaction"],
+        mutationFn: addTransaction,
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({queryKey: ["transactions"]});
+            toast.success(t("success-add-message"))
+        },
+        onError: () => toast.error(t("fail-message")),
+        onSettled: () => setOpen(false)
+    })
+
+    const {mutate: editTransaction, isPending: isPendingUpdate} = useMutation({
+        mutationKey: ["editTransaction"],
+        mutationFn: ({id , transaction} : {id :string , transaction : Omit<Transaction, "id" | "createdAt">})=>updateTransaction(id , transaction),
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({queryKey: ["transactions"]});
+            toast.success(t("success-edit-message"))
+        },
+        onError: () => toast.error(t("fail-message")),
+        onSettled: () => setOpen(false)
+    })
+
+
     const form = useForm<z.infer<typeof transactionSchema>>({
         resolver: zodResolver(transactionSchema),
         defaultValues: {
-            title:transaction ? transaction.title :"",
+            title: transaction ? transaction.title : "",
             amount: transaction ? transaction.amount : "",
-            category: transaction ? transaction.category :"",
-            type:transaction ? transaction.type : "",
-            note: transaction ?  transaction.note :"",
+            category: transaction ? transaction.category : "",
+            transactionType: transaction ? transaction.transactionType : "",
+            note: transaction ? transaction.note : "",
         }
     })
 
     const handleTransactionSubmit = (data: z.infer<typeof transactionSchema>) => {
         console.log(data);
-        setOpen(false)
+        if (!transaction) {
+            createTransaction(data)
+        } else {
+            editTransaction({id: transaction.id, transaction: data})
+        }
+
     }
     return (
         <Form {...form}>
@@ -67,11 +104,11 @@ function TransactionForm({transaction, setOpen} : {transaction ?: Transaction, s
                             </FormControl>
                             <FormMessage/>
                         </FormItem>
-                    )} name={"type"}/>
+                    )} name={"transactionType"}/>
                     <FormField control={form.control} render={({field}) => (
                         <FormItem className={"flex-1/2"}>
-                            <FormControl >
-                                <Select dir={"rtl"} onValueChange={field.onChange} defaultValue={field.value} >
+                            <FormControl>
+                                <Select dir={"rtl"} onValueChange={field.onChange} defaultValue={field.value}>
                                     <SelectTrigger className={"w-full"}>
                                         <SelectValue placeholder={t("categoryPlaceholder")}/>
                                     </SelectTrigger>
@@ -97,7 +134,7 @@ function TransactionForm({transaction, setOpen} : {transaction ?: Transaction, s
                         <FormMessage/>
                     </FormItem>
                 )} name={"note"} control={form.control}/>
-                <Button>{t("save")}</Button>
+                <Button disabled={isPending || isPendingUpdate}>{t("save")}</Button>
             </form>
         </Form>
     );

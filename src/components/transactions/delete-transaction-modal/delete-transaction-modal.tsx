@@ -11,13 +11,27 @@ import {
 } from "@/components/ui/dialog";
 import {Button} from "@/components/ui/button";
 import {useTranslations} from "next-intl";
+import {Transaction} from "@/interfaces/transactions";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {deleteTransaction} from "@/services/transaction";
+import {toast} from "sonner";
 
-function DeleteTransactionModal({id}: { id: string }) {
-    const t =useTranslations("dashboard.transactions.deleteTransaction");
+function DeleteTransactionModal({transaction}: { transaction: Transaction }) {
+    const t = useTranslations("dashboard.transactions.deleteTransaction");
+    const queryClient = useQueryClient();
+    const {mutate, isPending} = useMutation({
+        mutationKey: ["deleteTransaction"],
+        mutationFn: deleteTransaction,
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({queryKey: ["transactions"]});
+            toast.success(t("success-message-delete"));
+        },
+        onError: () => toast.error(t("fail-message")),
+        onSettled: () => setOpen(false)
+    })
     const [open, setOpen] = useState<boolean>(false);
     const handleDelete = () => {
-        console.log(id)
-        setOpen(false);
+        mutate(transaction.id)
     }
     return (
         <Dialog open={open} onOpenChange={setOpen}>
@@ -30,11 +44,11 @@ function DeleteTransactionModal({id}: { id: string }) {
                     <DialogTitle>{t("title")}</DialogTitle>
                     <DialogDescription>{t("description")}</DialogDescription>
                 </DialogHeader>
-                <DialogFooter >
+                <DialogFooter>
                     <DialogClose asChild={true}>
                         <Button variant={"secondary"}>{t("cancel")}</Button>
                     </DialogClose>
-                    <Button onClick={handleDelete} variant={"destructive"}>{t("delete")}</Button>
+                    <Button onClick={handleDelete} variant={"destructive"} disabled={isPending}>{t("delete")}</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

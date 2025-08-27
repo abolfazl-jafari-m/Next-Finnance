@@ -1,8 +1,8 @@
-type TransactionType = "income" | "outcome";
+
 
 export interface Transaction  {
     id: string;
-    type: TransactionType;
+    transactionType: string;
     title: string;
     amount: string;
     category: string;
@@ -13,7 +13,7 @@ export interface Transaction  {
 export const transactions: Transaction[] = [
     {
         id: "trx-002",
-        type: "outcome",
+        transactionType: "outcome",
         title: "اجاره خانه",
         amount: "6000000",
         category: "rent",
@@ -22,7 +22,7 @@ export const transactions: Transaction[] = [
     },
     {
         id: "trx-001",
-        type: "income",
+        transactionType: "income",
         title: "حقوق تیر",
         amount: "15000000",
         category: "salary",
@@ -31,7 +31,7 @@ export const transactions: Transaction[] = [
     },
     {
         id: "trx-003",
-        type: "outcome",
+        transactionType: "outcome",
         title: "خرید اینترنت",
         amount: "250000",
         category: "utilities",

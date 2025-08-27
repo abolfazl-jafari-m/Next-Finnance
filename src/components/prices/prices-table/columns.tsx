@@ -36,7 +36,8 @@ export const columns: ColumnDef<Coins>[] = [
                     <p>{coin.name}</p>
                 </div>
             )
-        }
+        },
+        enableHiding : false
     }
     ,
     {
@@ -56,7 +57,8 @@ export const columns: ColumnDef<Coins>[] = [
                     style: "currency",
                     currencyDisplay: "symbol"
                 }).format(price as number);
-            }
+            },
+        enableHiding : false
     }
     ,
     {

@@ -15,7 +15,8 @@ export const columns: ColumnDef<Transaction>[] = [
         enableHiding: false,
         enableSorting: false,
         header: ({table}) => (
-            <Checkbox className={"data-[state=checked]:border-white data-[state=checked]:bg-emerald-600 dark:data-[state=checked]:bg-emerald-200 m-1.5"}
+            <Checkbox
+                className={"data-[state=checked]:border-white data-[state=checked]:bg-emerald-600 dark:data-[state=checked]:bg-emerald-200 m-1.5"}
                 checked={table.getIsAllPageRowsSelected() || table.getIsSomePageRowsSelected() && "indeterminate"}
                 onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
                 aria-label={"Select all"}
@@ -30,10 +31,10 @@ export const columns: ColumnDef<Transaction>[] = [
         )
     },
     {
-        accessorKey: "type",
+        accessorKey: "transactionType",
         header: "نوع",
         cell: ({row}) => (
-            row.getValue("type") === "income"
+            row.original.transactionType === "income"
                 ? <div
                     className={"flex items-center justify-center gap-x-1 mx-auto bg-green-300/40 rounded-xl px-2 py-1 text-xs w-fit"}>
                     <TrendingUp size={12}/>
@@ -91,21 +92,43 @@ export const columns: ColumnDef<Transaction>[] = [
     },
     {
         accessorKey: "category",
-        header: "دسته بندی"
+        header: "دسته بندی",
+        cell: ({row}) => {
+            const category = row.original.category
+            switch (category) {
+                case  "shopping":
+                    return "خرید";
+                case  "rent":
+                    return "اجاره";
+                case  "enjoyment":
+                    return "تفریح";
+                case  "food":
+                    return "غذا";
+                case  "other":
+                    return "سایر";
+                default :
+                    return "نامشخص"
+            }
+        }
     },
     {
         accessorKey: "note",
         header: "یادداشت",
+        cell: ({row}) => (
+            <p className={"line-clamp-1 "}>
+                {row.original.note}
+            </p>
+        )
     },
     {
         id: "action",
         cell: ({row}) => {
             const transaction = row.original;
             return (
-                <TransactionActions id={transaction.id} />
+                <TransactionActions transaction={transaction}/>
             )
         },
-    enableHiding: false,
-    enableSorting: false,
-}
+        enableHiding: false,
+        enableSorting: false,
+    }
 ]
