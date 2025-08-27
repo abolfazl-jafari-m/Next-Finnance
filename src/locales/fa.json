@@ -95,7 +95,8 @@
           "save": "ذخیره",
           "success-edit-message": "تراکنش با موفقیت بزور رسانی شد",
           "success-add-message": "تراکنش با موفقیت اضافه شد",
-          "fail-message": "مشکلی پیش اماده لطفا دوباره تلاش کنید"
+          "fail-message": "مشکلی پیش اماده لطفا دوباره تلاش کنید",
+          "not-authorise": "برای این کار باید وارد شوید"
         }
       },
       "editTransactions": {

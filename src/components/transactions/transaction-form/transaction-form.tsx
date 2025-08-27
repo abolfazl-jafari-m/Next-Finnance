@@ -14,6 +14,7 @@ import {useTranslations} from "next-intl";
 import {addTransaction, updateTransaction} from "@/services/transaction";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {toast} from "sonner";
+import {useIsGuestMode} from "@/hooks/use-is-guest-mode";
 
 
 function TransactionForm({transaction, setOpen}: {
@@ -21,6 +22,7 @@ function TransactionForm({transaction, setOpen}: {
     setOpen: Dispatch<React.SetStateAction<boolean>>
 }) {
     const t = useTranslations("dashboard.transactions.addTransaction.transaction-form");
+    const {guestMode} = useIsGuestMode();
 
 
     const queryClient = useQueryClient();
@@ -37,7 +39,10 @@ function TransactionForm({transaction, setOpen}: {
 
     const {mutate: editTransaction, isPending: isPendingUpdate} = useMutation({
         mutationKey: ["editTransaction"],
-        mutationFn: ({id , transaction} : {id :string , transaction : Omit<Transaction, "id" | "createdAt">})=>updateTransaction(id , transaction),
+        mutationFn: ({id, transaction}: {
+            id: string,
+            transaction: Omit<Transaction, "id" | "createdAt">
+        }) => updateTransaction(id, transaction),
         onSuccess: async () => {
             await queryClient.invalidateQueries({queryKey: ["transactions"]});
             toast.success(t("success-edit-message"))
@@ -59,13 +64,15 @@ function TransactionForm({transaction, setOpen}: {
     })
 
     const handleTransactionSubmit = (data: z.infer<typeof transactionSchema>) => {
-        console.log(data);
-        if (!transaction) {
-            createTransaction(data)
+        if (guestMode) {
+            toast.warning(t("not-authorise"));
         } else {
-            editTransaction({id: transaction.id, transaction: data})
+            if (!transaction) {
+                createTransaction(data)
+            } else {
+                editTransaction({id: transaction.id, transaction: data})
+            }
         }
-
     }
     return (
         <Form {...form}>
