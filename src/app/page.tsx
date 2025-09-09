@@ -1,19 +1,22 @@
 import Header from "@/components/landing/header/header";
 import Cta from "@/components/landing/cta/cta";
 import Features from "@/components/landing/features/features";
+import Preview from "@/components/landing/preview/preview";
+import Download from "@/components/landing/download/download";
+import Footer from "@/components/landing/footer/footer";
 
 export default function LandingPage() {
 
     return (
         <>
             <Header/>
-            <main className={"bg-gray-100"}>
+            <main className={"bg-gray-100 p-10"}>
                 <Cta/>
-                <Features />
+                <Features/>
+                <Preview/>
+                <Download/>
             </main>
-            <footer>
-
-            </footer>
+            <Footer/>
         </>
     );
 }

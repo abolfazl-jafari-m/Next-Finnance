@@ -4,12 +4,13 @@ import {TrendingDown, TrendingUp} from "lucide-react";
 import {useTranslations} from "next-intl";
 
 function TransactionListItem({transaction}: { transaction: Transaction }) {
+    console.log(transaction.transactionType);
     const t = useTranslations("dashboard.mainPage.lastTransactions");
     return (
         <div className={"flex items-center justify-between bg-secondary rounded-sm p-2"}>
             <div className={"flex items-center gap-x-1.5"}>
                 {
-                    transaction.type === "income"
+                    transaction.transactionType === "income"
                         ? <TrendingUp className={"bg-green-300/40 p-2 rounded-sm w-9 h-9"} size={32}/>
                         :
                         <TrendingDown className={"bg-red-400/40 p-2 rounded-sm w-9 h-9"} size={32}/>
