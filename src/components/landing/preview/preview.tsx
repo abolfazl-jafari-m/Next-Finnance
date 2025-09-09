@@ -4,8 +4,8 @@ import Image from "next/image";
 
 function Preview() {
     return (
-        <section className={"flex items-center justify-center gap-10 p-10 my-15"}>
-            <div className={"w-1/3 space-y-5"}>
+        <section className={"flex items-center justify-center gap-10 p-10 my-15 max-md:my-5 max-md:p-5 max-lg:flex-col"}>
+            <div className={"w-1/3 space-y-5 max-lg:w-full"}>
                 <h3 className={"font-semibold text-2xl"}>همه‌چیز را یک‌جا ببینید!</h3>
                 <p className={"text-lg"}>با داشبورد هوشمند ما، موجودی حساب‌ها، تراکنش‌ها و هزینه‌های روزانه‌تان همیشه
                     جلوی چشم‌تان است.
@@ -13,7 +13,7 @@ function Preview() {
                     جمع شده</p>
             </div>
             <div className={"bg-primary/80 rounded-3xl p-5"}>
-                <Image src={appImageLabtop.src} alt="preview" width={650} height={500}/>
+                <Image src={appImageLabtop.src} alt="preview" width={650} height={500} className={"max-lg:w-100"}/>
             </div>
         </section>
     );

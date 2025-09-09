@@ -3,6 +3,7 @@ import Image from "next/image";
 import Logo from "@/assets/images/Logo.svg"
 
 import {Button} from "@/components/ui/button";
+import Link from "next/link";
 
 function Header() {
     return (
@@ -12,7 +13,11 @@ function Header() {
                     <Image src={Logo.src} alt={"logo"} width={36} height={36}/>
                     <h1 className={"font-bold text-xl"}>دستیار مالی ان وی</h1>
                 </div>
-                <Button variant={"default"} className={"rounded-2xl px-8"} type={"button"}> ورود به برنامه</Button>
+                <Button variant={"default"} className={"rounded-2xl px-8"} type={"button"} asChild={true}>
+                    <Link href={"/login"}>
+                        ورود به برنامه
+                    </Link>
+                </Button>
             </div>
         </header>
     );
