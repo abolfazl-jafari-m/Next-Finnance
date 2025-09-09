@@ -69,12 +69,12 @@ export const columns: ColumnDef<Coins>[] = [
             const change: string = row.getValue("changePercent24Hr");
             const percent = Number(parseFloat(change).toFixed(2));
             return percent > 0 ?
-                <div className={"flex items-center gap-2 justify-center text-green-900"}>
+                <div className={"flex items-center gap-2 justify-center text-green-900 dark:text-green-500"}>
                     {Math.abs(percent)}
                     <ArrowUp size={12} color={"green"}/>
                 </div>
                 :
-                <div className={"flex items-center gap-2 justify-center text-rose-900"}>
+                <div className={"flex items-center gap-2 justify-center text-rose-900 dark:text-rose-400"}>
                     {Math.abs(percent)}
                     <ArrowDown size={"12"} color={"red"}/>
                 </div>
