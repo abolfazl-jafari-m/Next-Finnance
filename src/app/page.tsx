@@ -8,15 +8,15 @@ import Footer from "@/components/landing/footer/footer";
 export default function LandingPage() {
 
     return (
-        <>
+        <div className={"bg-gray-100 dark:bg-linear-150 dark:from-gray-800 dark:to-black"}>
             <Header/>
-            <main className={"bg-gray-100 p-10"}>
+            <main className={"p-10"}>
                 <Cta/>
                 <Features/>
                 <Preview/>
                 <Download/>
             </main>
             <Footer/>
-        </>
+        </div>
     );
 }

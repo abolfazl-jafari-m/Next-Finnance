@@ -8,7 +8,7 @@ function Download() {
             <div className={"text-white flex flex-col items-center gap-3 max-sm:gap-2"}>
                 <h3 className={"text-3xl font-semibold max-md:text-xl max-sm:text-lg"}>همین الان شروع کنید</h3>
                 <p className={"text-lg max-sm:text-sm"}>با کم تر از چند کلیک</p>
-                <Button variant={"destructive"} size={"sm"}>دانلود نسخه اندروید</Button>
+                <Button variant={"destructive"} size={"sm"} className={"dark:bg-rose-900"}>دانلود نسخه اندروید</Button>
             </div>
             <div className={"absolute left-10 max-sm:left-5"}>
                 <Image src={appImage.src} alt={"app Preview"} width={150} height={150} className={"max-sm:w-24"}/>

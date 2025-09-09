@@ -7,7 +7,7 @@ import Image from "next/image";
 function Footer() {
     return (
         <footer
-            className={"bg-gray-700 text-white min-h-44 grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-start gap-10 justify-items-center content-center px-10 py-5 "}>
+            className={"bg-gray-700 dark:bg-neutral-900 text-white min-h-44 grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-start gap-10 justify-items-center content-center px-10 py-5 "}>
             <div className={"space-y-2"}>
                 <div className={"flex items-center gap-4"}>
                     <div className={"p-2 rounded-full bg-white"}>
@@ -20,7 +20,7 @@ function Footer() {
                     برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
             </div>
             <div className={"h-full "}>
-                <ul className={"space-y-2 h-full text-muted"}>
+                <ul className={"space-y-2 h-full text-muted dark:text-muted-foreground"}>
                     <li>خانه</li>
                     <li>دانلود</li>
                     <li>تعرفه ها</li>
